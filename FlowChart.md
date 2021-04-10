@@ -1,3 +1,3 @@
 FlowChart
 
-![기능 플로우차트](https://user-images.githubusercontent.com/63489719/114259290-6b55eb80-9992-11eb-9d06-de40a4dfc517.png)
+![기능플로우차트](https://user-images.githubusercontent.com/66582788/114264940-dbaf4c00-9a28-11eb-8dc6-cdeea4532906.png)
