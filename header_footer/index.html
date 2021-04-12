@@ -1,0 +1,37 @@
+<!DOCTYPE html> <!--작성자:김현영-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Nav bar</title>
+    <script src="https://kit.fontawesome.com/74badabdc3.js" crossorigin="anonymous"></script>
+    <script src ="main.js" defer></script> <!--햄버거를 눌렀을 때의 액션을 정의해둔 main.js를 가져옴-->
+</head>
+<body>
+    <nav class="nav">
+        <div class="navLogo">
+            <i class="fab fa-connectdevelop"></i>
+            <a href="">Game Crawler</a>
+        </div>
+        <ul class="navMenu">
+            <li><a href="">리뷰게시판</a></li>
+            <li><a href="">통계</a></li>
+        </ul>
+        <ul class="navLoginMenu">
+            <li><a href="">Login</a></li>
+            <li><a href="">[Username]</a></li>
+            <li><a href="">My Page</a></li>
+            <li><a href="">Logout</a></li>
+        </ul>
+        <a href="#" class="navToggleBtn"> <!-- a href=""로 빈칸으로 두니 햄버거 눌러도 메뉴가 일시적으로 나왔다가 사라져버렸음-->
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+    <footer class="footer">
+        <div class="team">The Game Crawlers</div>
+    </footer>
+    
+
+</body>
+</html>  
