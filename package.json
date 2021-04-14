@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/codestates/GameCrawler-client/issues"
   },
-  "homepage": "https://github.com/codestates/GameCrawler-client#readme"
+  "homepage": "https://github.com/codestates/GameCrawler-client#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
 }
