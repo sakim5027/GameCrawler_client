@@ -1,8 +1,7 @@
 import './App.css';
-
 function App() {
   return (
-    <div>
+    <div className = "App">
       <h1>Hello World!</h1>
       <h2>Welcome to Game Crawler!</h2>
     </div>
