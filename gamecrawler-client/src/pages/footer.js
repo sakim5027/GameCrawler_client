@@ -2,7 +2,10 @@ import React from 'react';
 
 function Footer() {
     return (
-        <div className="footer">The Crawlers</div>
+        <div className="footer">
+            <div className="teamName">The Crawlers</div>
+            <div>Contact us: theCrawlers03@gmail.com</div>
+        </div>
     )
 }
 

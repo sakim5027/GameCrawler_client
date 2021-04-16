@@ -2,25 +2,63 @@ import React from 'react';
 import './App.css';
 import Header from './pages/header';
 import Footer from './pages/footer';
-const toggleBtn =document.querySelector('.navToggleBtn');
-const navMenu = document.querySelector('.navMenu');
-const loginMenu = document.querySelector('.navLoginMenu');
+import Login from './pages/login';
+import Mypage from './pages/mypage'
+import Reviews from './pages/reviews'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+
 
 class App extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      isLogin: false
+    }
   };
 
   render(){
+    const {isLogin} = this.state;
     return (
-      <div>
-      <Header />
-      <h1>Hello World!</h1>
-      <h2>Welcome to Game Crawler!</h2>
-      <Footer />
-    </div>
-  );
+
+      <BrowserRouter>
+      <div className="App">
+      <Header/>
+      <Switch>
+        <Route exact path="/" render={ ()=>{
+          if(isLogin){
+            return <Redirect to="/mypage" />
+          }return <Redirect to="./login"/>
+      }}
+    />
+        <Route path="/login"><Login/></Route>
+        <Route path="/mypage"><Mypage/></Route>
+        <Route path="/reviews"><Reviews/></Route>
+      </Switch>
+      </div>
+      <Footer/>
+      </BrowserRouter>
+    )
+  }
 }
-}
+  
+//       <div>
+//       <Header />
+//       <Route>
+//         <Route 
+//         exact path="/" 
+//         render ={ ()=>{
+//           if (isLogin){
+//             return <Redirect to="/mypage"/>;
+//           }
+//           return <Redirect to ="/login"/>;
+//         }}
+//         />
+//         <Route exact path="/login" render={ () => <Login />} />
+//         </Route>  
+//       <Footer />
+//     </div>
+//   );
+// }
+// }
 
 export default App;
