@@ -11,6 +11,7 @@ input[type='text'] {
   text-align: center;
   outline: none;
   font-size: 1rem;
+  border-radius: 10px;
 }
 .App {
   display: flex;
@@ -39,6 +40,8 @@ input[type='text'] {
   flex: 1;
   justify-content: space-between;
   margin: 10px;
+  padding-top: 20px;
+  
 }
 .searchResult {
   font-weight: 400;
