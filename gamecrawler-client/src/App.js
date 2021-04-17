@@ -39,26 +39,6 @@ class App extends React.Component {
       </BrowserRouter>
     )
   }
-}
-  
-//       <div>
-//       <Header />
-//       <Route>
-//         <Route 
-//         exact path="/" 
-//         render ={ ()=>{
-//           if (isLogin){
-//             return <Redirect to="/mypage"/>;
-//           }
-//           return <Redirect to ="/login"/>;
-//         }}
-//         />
-//         <Route exact path="/login" render={ () => <Login />} />
-//         </Route>  
-//       <Footer />
-//     </div>
-//   );
-// }
-// }
+
 
 export default App;
