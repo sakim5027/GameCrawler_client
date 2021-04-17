@@ -1,35 +1,46 @@
 import React from 'react';
-import {Component} from 'react';
 import axios from 'axios';
 
-class FindIdAndPwd extends Component {
+class FindIdAndPwd extends React.Component {
     constructor(props){
         super(props);
         this.state={
             email: '',
             id: '',
-            idErrorMessage:'',
-            pwdErrorMessage: '',
+            idMessage:'',
+            pwdMessage: '',
         }
+        this.inputValueHandler = this.inputValueHandler.bind(this);
         this.searchIdHandler = this.searchIdHandler.bind(this);
         this.searchPwdHandler =this.searchPwdHandler.bind(this);
     }
+    inputValueHandler = (key) => (e)=>{
+        this.setState({[key]: e.target.value})
+    };
+
     searchIdHandler(){
         const {email} = this.state;
         if(!email){
-            this.setState({idErrorMessage: '이메일을 입력해주세요.'})
+            this.setState({idMessage: "이메일을 입력해주세요."})
         }else{
             axios
             .post('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/find-id',
-                {
-                    email: this.state.email
-                },{
-                    withCredentials:true
-                }
+                {email: this.state.email},{withCredentials:true}
             )
             .then(res => {
-                //조회된 아이디를 표시한다. 어떤 데이터 안에 들어 있지? 데이터가 어떻게 생겼지?
+                return res.data
          })
+         .then(result =>{
+             this.setState({
+                 email: result,
+                 idMessage: result
+             })
+         })
+         .catch(err => {
+             this.setState({
+                 idMessage: "유효하지 않은 이메일입니다."
+             })
+         })      
         }
 
     }
@@ -37,7 +48,7 @@ class FindIdAndPwd extends Component {
     searchPwdHandler(){
         const {email, id} = this.state;
         if(!email || !id){
-            this.setState({pwdErrorMessage: '이메일과 아이디를 모두 입력해주세요.'})
+            this.setState({pwdMessage: "이메일과 아이디를 모두 입력해주세요."})
         }else{
             axios
             .post('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/find-password',
@@ -47,30 +58,44 @@ class FindIdAndPwd extends Component {
                 },{
                     withCredentials:true
                 }
-            ).then()// 조회된 비밀번호를 이메일로 보낸다.
+            )
+            .then(res =>{
+                return res.data
+            })
+            .then(result =>{
+                this.setState({
+                    pwdMessage: "비밀번호가 등록된 이메일로 발송되었습니다."       //그리고 나서 이메일로 보내는 건 어떻게 하지?
+                })
+            })
+            .catch(err => {
+                this.setState({
+                    pwdMessage: "유효하지 않은 이메일이나 아이디입니다."
+                })
+            })
         }
     }
 
     render(){
+        const { email } = this.state;
         return(
+            <div className="topContainer">
             <div className="findContainer">
                 <h2>아이디/비밀번호 찾기</h2>
                 <div className="inputField">
                     <div className = "subTitle">아이디찾기</div>
                     <input name="userEmail" type="text" placeholder="이메일을 입력하세요." />
                     <button className = "searchBtn" onClick ={this.searchIdHandler}>조회</button>
-                    <div className="alert-box">{this.state.idErrorMessage}</div>
-                    <div className="searchResult">조회된 아이디: </div>
+                    <div className="alert-box">{this.state.idMessage}</div>
                 </div>
                 <div className="inputField">
                     <div className = "subTitle">비밀번호찾기</div>
                     <input name="userEmail" type="text" placeholder="이메일을 입력하세요." />
                     <input name="userId" type="text" placeholder="아이디를 입력하세요." />
                     <button className = "searchBtn" onClick ={this.searchPwdHandler}>조회</button>
-                    <div className="alert-box">{this.state.pwdErrorMessage}</div>
-                    <div className="searchResult">조회된 비밀번호: </div>
+                    <div className="alert-box">{this.state.pwdMessage}</div> 
                 </div>
-                <button className="homeBtn">Home</button> 
+                <button className="submitBtn">로그인하기</button> 
+            </div>
             </div>
         )
     }
