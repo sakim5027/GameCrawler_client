@@ -1,85 +1,4 @@
 
-*{
-  margin:0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-input[type='text'] {
-  background-color: #FEFCFF;
-  height: 30px;
-  border:none;
-  text-align: center;
-  outline: none;
-  font-size: 1rem;
-  border-radius: 10px;
-}
-/* .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color:#FEFCFF;
-} */
-.findContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 60vh;
-  width: 40vh;
-  background-color: #E5E4E2;
-  border-radius: 10px;
-  padding: 20px;
-  opacity: 0.8; 
-  font-weight: 900;
-}
-.inputField {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
-  flex: 1;
-  justify-content: space-between;
-  margin: 10px;
-  padding-top: 20px;
-  
-}
-.searchResult {
-  font-weight: 400;
-  text-align: start;
-}
-.searchBtn{
-  height: 30px;
-  border-radius: 8px;
-  border:none;
-  background-color:#2B547E;
-  color:#FEFCFF;
-}
-.searchBtn:hover{
-  background-color: #566D7E;
-}
-.homeBtn{
-  width: 100%;
-  height: 30px;
-  background-color: #263343;
-  border: none;
-  border-radius: 8px;
-  color: #FEFCFF;
-}
-.homeBtn:hover{
-  background-color: #616D7E;
-}
-.alert-box {
-  color: #990012;
-  font-weight: 500;
-  font-size: 0.8rem
-}
-
-
-
-
-
-
 /* 작성자:김현영 */
 :root{ /* 여기에서 기본적인 컬러를 정해 놓으면 다음부턴 변수 형식으로 쓸 수 있다. */
   --text-color: #f0f4f5;
@@ -87,10 +6,15 @@ input[type='text'] {
   --background-color: #263343;
   --background-color-down:#E5E4E2;
   --accent-color:  #EAC117;
+  --accent-color-dark:#4C787E;
+  --input-color:#FEFCFF;
+  --alert-color:#8C001A;
 
 }
-  body{
+*{
   margin:0; /* 기본적으로 약간 margin이 들어가 있어서 끝부분에 흰색으로 처리되는 걸 수정하는 부분 */
+  padding:0;
+  box-sizing:border-box;
 }
 a{
   text-decoration: none;  /*기본적으로 anchor tag에 들어가는 데코를 없애고 컬러 변경해줌 */
@@ -126,21 +50,116 @@ a{
 .navLoginMenu{
   display:flex;
   list-style: none;
+  color: var(--text-color);
   padding-left:0;
 }
 .navLoginMenu li{
   padding: 8px 12px;
 }
-.navLoginMenu li:hover{
-  background-color:var(--background-color-down);
+.navLoginMenu li:not(.loginUser):hover{   /* 로그인 시 유저 이름을 표시하는 것에는 hover 필요 없음 */
+  background-color:var(--accent-color-dark);
   border-radius: 4px;
+
 }
+
 .navListBtn{
   position: absolute; /* 화면 사이즈가 조정되는 것에 상관없이 위치를 정해놓음 */
   right:32px;
   font-size:24px;
   color: var(--text-color);
   display: none;      /* 화면 사이즈가  768px 이상일 때는 버튼 숨기기 */
+}
+
+.footer{
+  height:40px;
+  background-color:var(--background-color-down);
+  position: fixed;
+  color: var(--text-color-dark);
+  width:100%;
+  bottom: 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 20px;
+}
+.teamName{
+  font-size: 15x;
+  padding-right: 60px;
+}
+
+
+input[type='text'] {
+  background-color: var(--input-color);
+  height: 30px;
+  border:none;
+  text-align: center;
+  outline: none;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+/* .App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color:#FEFCFF;
+} */
+.topContainer{
+  display: flex;
+  justify-content: center;
+}
+.findContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60vh;
+  width: 40vh;
+  background-color: var(--background-color-down);
+  border-radius: 10px;
+  padding: 20px;
+  opacity: 0.8; 
+  font-weight: 900;
+}
+.inputField {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  flex: 1;
+  justify-content: space-between;
+  margin: 10px;
+  padding-top: 20px;
+  
+}
+.searchResult {
+  font-weight: 400;
+  text-align: start;
+}
+.searchBtn{
+  height: 30px;
+  border-radius: 8px;
+  border:none;
+  background-color:var(--accent-color-dark);
+  color:var(--text-color);
+}
+.searchBtn:hover{
+  background-color:var(--text-color-dark);
+}
+.submitBtn{
+  width: 100%;
+  height: 30px;
+  background-color: var(--background-color);
+  border: none;
+  border-radius: 8px;
+  color:var(--text-color);
+}
+.submitBtn:hover{
+  background-color:var(--text-color-dark);
+}
+.alert-box {
+  color: var(--alert-color);
+  font-weight: 500;
+  font-size: 0.8rem
 }
 
 /* 레이아웃을 반응형으로 만들 때는 media query를 사용한다. mdn media queries에서 확인 가능
@@ -176,33 +195,16 @@ a{
   .navListBtn {
       display: block;
   }
-  /* .navMenu.active{
+  .navMenu.active{
       display:flex;
   }
   .navLoginMenu.active{
       display:flex;
-  } */
-
+  }
+  .loginUser {
+    display:none;
+  }
 }
-
-.footer{
-  height:40px;
-  background-color:var(--background-color-down);
-  position: fixed;
-  color: var(--text-color-dark);
-  width:100%;
-  bottom: 0;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding-left: 20px;
-}
-.teamName{
-  font-size: 15x;
-  padding-right: 60px;
-}
-
-
 
 
 

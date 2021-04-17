@@ -6,12 +6,14 @@ import Login from './pages/login';
 import Mypage from './pages/mypage'
 import Reviews from './pages/reviews'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import FindIdAndPwd from './pages/findIdAndPwd';
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLogin: false
+      isLogin: true,
+      userinfo: null
     }
   };
 
@@ -25,7 +27,7 @@ class App extends React.Component {
       <Switch>
         <Route exact path="/" render={ ()=>{
           if(isLogin){
-            return <Redirect to="/mypage" />
+            return <Redirect to="/"/>
           }return <Redirect to="./login"/>
       }}
     />
@@ -34,6 +36,7 @@ class App extends React.Component {
         <Route path="/reviews"><Reviews/></Route>
       </Switch>
       </div>
+      <FindIdAndPwd/>
       <Footer/>
       </BrowserRouter>
     )
