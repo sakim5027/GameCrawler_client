@@ -14,13 +14,13 @@ input[type='text'] {
   font-size: 1rem;
   border-radius: 10px;
 }
-.App {
+/*.App {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color:#FEFCFF;
-}
+}*/
 .findContainer {
   display: flex;
   flex-direction: column;
@@ -77,141 +77,6 @@ input[type='text'] {
 
 
 
-
-/* .App {
-  text-align: center;
-=======
-/* 작성자:김현영 */
-:root{ /* 여기에서 기본적인 컬러를 정해 놓으면 다음부턴 변수 형식으로 쓸 수 있다. */
-  --text-color: #f0f4f5;
-  --text-color-dark: #616D7E;
-  --background-color: #263343;
-  --background-color-down:#E5E4E2;
-  --accent-color:  #EAC117;
-
-}
-  body{
-  margin:0; /* 기본적으로 약간 margin이 들어가 있어서 끝부분에 흰색으로 처리되는 걸 수정하는 부분 */
-}
-a{
-  text-decoration: none;  /*기본적으로 anchor tag에 들어가는 데코를 없애고 컬러 변경해줌 */
-  color: var(--text-color)
-}
-.nav {
-  display:flex;
-  justify-content: space-between; /*flexbox로 나열한 내용들을 space로 구분한다.*/
-  align-items: center;
-  background-color: var(--background-color);
-  padding:3px 12px; /*메뉴들이 아래,위,양옆에 너무 붙는 걸 수정하는 부분 */
-}
-.navLogo{
-  font-size:24px;
-  color: var(--accent-color); /* 로고 컬러  */
-  font-style: italic;
-
-}
-.navMenu {
-  display: flex; /* 메뉴들을 한 줄에 하나씩 나오도록 */
-  list-style: none;
-  padding-left:0; /*왼쪽이 기본적으로 padding이 들어가 있어서 정확히 중간이 아니었기 때문에 수정함 */
-  font-size: 17px;
-}
-.navMenu li{
-  padding: 8px 12px; /*margin이 아니라 padding을 넣게 되면 클릭할 수 있으면서 색깔을 넣었을 때 표시되는 영역도 넓어짐*/
-  margin: 0px 20px; /*'리뷰게시판', '통계' 글자 간격이 좁은데 padding으로 조절 시 작은 화면에서 볼 때 navLoginMenu와 hover 되었을 때 나타나는 게 달라서 margin으로 조절*/ 
-}
-.navMenu li:hover {
-  background-color: var(--accent-color);
-  border-radius : 4px; /*둥근모서리로 만들기*/
-}
-.navLoginMenu{
-  display:flex;
-  list-style: none;
-  padding-left:0;
-}
-.navLoginMenu li{
-  padding: 8px 12px;
-}
-.navLoginMenu li:hover{
-  background-color:var(--background-color-down);
-  border-radius: 4px;
-}
-.navListBtn{
-  position: absolute; /* 화면 사이즈가 조정되는 것에 상관없이 위치를 정해놓음 */
-  right:32px;
-  font-size:24px;
-  color: var(--text-color);
-  display: none;      /* 화면 사이즈가  768px 이상일 때는 버튼 숨기기 */
-}
-
-/* 레이아웃을 반응형으로 만들 때는 media query를 사용한다. mdn media queries에서 확인 가능
-창이 작아지면 메뉴들을 아래로 내리도록 만든다. 보통 320-480px까지는 모바일, 768px-1024px까지는 태블릿 그 이상은 desktop*/
-@media screen and (max-width: 768px){
-  .nav{
-      flex-direction: column; /*로 고, 로그인메뉴를 한 열에 배열 */
-      align-items: flex-start; /* 로고를 수평에서 왼쪽에 위치시킨다 */
-      padding:8px 24px
-  }
-  .navMenu{
-      flex-direction: column; /* 로그인메뉴를 한 열에 배열 */
-      align-items: center; /*로고는 왼쪽에 놓더라도 메뉴들은 가운데에 위치시킨다*/
-      width: 100%; /* 메뉴의 width 자체가 작게 설정되어 있어서 가운데로 오지 않는 문제 수정 */
-      /* display: none;   화면에 작아졌을 때는 로그인 메뉴를 숨기고 햄버거 버튼을 눌렀을 때 나타나게 한다 */
-  }
-  .navMenu li{
-      width: 100%; /* 마우스 호버했을 때 꽉 차게 표시하도록 한다. */
-      text-align: center; /* width 수정 시 가운데 정렬되지 않는 문제 수정 */
-  }
-  
-  .navLoginMenu{
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      /* display: none; */
-  }
-  .navLoginMenu li{
-      width: 100%;
-      text-align: center;
-  }
-  
-  .navListBtn {
-      display: block;
-  }
-  /* .navMenu.active{
-      display:flex;
-  }
-  .navLoginMenu.active{
-      display:flex;
-  } */
-
-}
-
-.footer{
-  height:40px;
-  background-color:var(--background-color-down);
-  position: fixed;
-  color: var(--text-color-dark);
-  width:100%;
-  bottom: 0;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding-left: 20px;
-}
-.teamName{
-  font-size: 15x;
-  padding-right: 60px;
-}
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
 
 
