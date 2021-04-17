@@ -14,13 +14,13 @@ input[type='text'] {
   font-size: 1rem;
   border-radius: 10px;
 }
-.App {
+/* .App {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color:#FEFCFF;
-}
+} */
 .findContainer {
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ input[type='text'] {
   background-color: #E5E4E2;
   border-radius: 10px;
   padding: 20px;
-  opacity: 0.8; /* 요소를 투명하게 만드는 속성 */
+  opacity: 0.8; 
   font-weight: 900;
 }
 .inputField {
@@ -78,9 +78,8 @@ input[type='text'] {
 
 
 
-/* .App {
-  text-align: center;
-=======
+
+
 /* 작성자:김현영 */
 :root{ /* 여기에서 기본적인 컬러를 정해 놓으면 다음부턴 변수 형식으로 쓸 수 있다. */
   --text-color: #f0f4f5;
@@ -204,14 +203,6 @@ a{
 }
 
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
 
 

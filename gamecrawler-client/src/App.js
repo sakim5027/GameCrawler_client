@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-
 import Header from './pages/header';
 import Footer from './pages/footer';
 import Login from './pages/login';
 import Mypage from './pages/mypage'
 import Reviews from './pages/reviews'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-
 
 class App extends React.Component {
   constructor(props){
@@ -40,6 +38,8 @@ class App extends React.Component {
       </BrowserRouter>
     )
   }
+}
 
+  
 
 export default App;
