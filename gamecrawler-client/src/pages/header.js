@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faConnectdevelop } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom' //dev에 설치해야 함
+import { Container } from './Login/Container'
 
 
 class Header extends React.Component {
@@ -27,6 +28,14 @@ barHandler(){
 render() {
     // const { nickname } = this.state.userinfo;
     // const {isLogin} = this.state
+    
+    const triggerText = 'Login';
+    const onSubmit = (event) => {
+        event.preventDefault(event);
+        console.log(event.target.name.value);
+        console.log(event.target.email.value);
+    };
+    
     return (
         <nav id="nav" className = "nav">
             <div className="navLogo">
@@ -49,7 +58,7 @@ render() {
                 )} */}
                 <li className="loginUser"> username</li>
                 <li><Link to="/mypage">My page</Link></li>
-                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/login"><Container triggerText={triggerText} onSubmit={onSubmit}/></Link></li>
 
             </ul>
             <a href="javascript:void(0);" className="navListBtn" onClick={this.barHandler}>  {/* 이 버튼을 누르면 목록이 나타나도록 js 적용*/}
@@ -57,11 +66,11 @@ render() {
             </a>
             
         </nav>
-    )
+    )}
+
+
 
 }
-}
-
 
 
 export default Header;
