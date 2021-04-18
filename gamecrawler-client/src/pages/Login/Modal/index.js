@@ -1,7 +1,7 @@
 //작성자:김슬안
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Form } from '../Form';
+import { LoginForm } from '../LoginForm';
 import FocusTrap from 'focus-trap-react';
 
 export const Modal = ({
@@ -34,7 +34,7 @@ export const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            <Form onSubmit={onSubmit} /> 
+            <LoginForm /> 
           </div>
         </div>
       </aside>

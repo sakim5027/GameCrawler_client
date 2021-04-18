@@ -61,6 +61,14 @@ a{
   border-radius: 4px;
 
 }
+.navLoginBtn{   /* 로그인 시 유저 이름을 표시하는 것에는 hover 필요 없음 */
+  background-color:transparent;
+  border: none;
+  text-decoration: none;  /*기본적으로 anchor tag에 들어가는 데코를 없애고 컬러 변경해줌 */
+  color: var(--text-color);
+  font-size: 17px;
+  text-decoration: none; 
+}
 
 .navListBtn{
   position: absolute; /* 화면 사이즈가 조정되는 것에 상관없이 위치를 정해놓음 */
@@ -68,6 +76,7 @@ a{
   font-size:24px;
   color: var(--text-color);
   display: none;      /* 화면 사이즈가  768px 이상일 때는 버튼 숨기기 */
+  
 }
 
 .footer{
@@ -120,6 +129,18 @@ input[type='text'] {
   opacity: 0.8; 
   font-weight: 900;
 }
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50vh;
+  width: 40vh;
+  background-color: var(--background-color-down);
+  border-radius: 10px;
+  padding: 20px;
+  opacity: 0.8; 
+  font-weight: 900;
+}
 .inputField {
   display: flex;
   flex-direction: column;
@@ -130,6 +151,32 @@ input[type='text'] {
   margin: 10px;
   padding-top: 20px;
   
+}
+.loginField {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  flex: 1.3;
+  justify-content: space-between;
+  margin: 18px;
+  padding-top: 20px;
+  
+}
+.buttonField {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  flex: 0.89;
+  justify-content: space-between;
+  margin: 8px;
+  padding-top:28px;
+  
+}
+.buttonField button:hover {
+  background-color: var(--accent-color);
+  border-radius : 4px; /*둥근모서리로 만들기*/
 }
 .searchResult {
   font-weight: 400;
@@ -142,10 +189,25 @@ input[type='text'] {
   background-color:var(--accent-color-dark);
   color:var(--text-color);
 }
+.loginSearchBtn{
+  height: 30px;
+  border-radius: 8px;
+  border:none;
+  background-color:var(--accent-color-dark);
+  color:var(--text-color);
+}
 .searchBtn:hover{
   background-color:var(--text-color-dark);
 }
 .submitBtn{
+  width: 100%;
+  height: 30px;
+  background-color: var(--background-color);
+  border: none;
+  border-radius: 8px;
+  color:var(--text-color);
+}
+.loginSubmitBtn{
   width: 100%;
   height: 30px;
   background-color: var(--background-color);

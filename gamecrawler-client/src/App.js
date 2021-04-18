@@ -2,11 +2,12 @@ import React from 'react';
 import './App.css';
 import Header from './pages/header';
 import Footer from './pages/footer';
-import Login from './pages/login';
+import Login from './pages/Login/login';
 import Mypage from './pages/mypage'
 import Reviews from './pages/reviews'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import FindIdAndPwd from './pages/findIdAndPwd';
+import { Container } from './pages/Login/Container'
 
 class App extends React.Component {
   constructor(props){
@@ -19,6 +20,7 @@ class App extends React.Component {
 
   render(){
     const {isLogin} = this.state;
+    
     return (
 
       <BrowserRouter>
@@ -31,7 +33,7 @@ class App extends React.Component {
           }return <Redirect to="./login"/>
       }}
     />
-        <Route path="/login"><Login/></Route>
+        <Route path="/login" component ={ Container }></Route>
         <Route path="/mypage"><Mypage/></Route>
         <Route path="/reviews"><Reviews/></Route>
       </Switch>
