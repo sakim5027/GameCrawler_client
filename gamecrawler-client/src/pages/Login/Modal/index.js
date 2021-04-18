@@ -34,7 +34,7 @@ export const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            <LoginForm onSubmit={onSubmit} /> 
+            <LoginForm /> 
           </div>
         </div>
       </aside>
