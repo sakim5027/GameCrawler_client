@@ -8,7 +8,8 @@ export const Modal = ({
   modalRef,
   buttonRef,
   closeModal,
-  onSubmit
+  onSubmit,
+  onClickOutside
 }) => {
   return ReactDOM.createPortal( //포커스가 모달 안에만 있도록 focusTrap 사용
     <FocusTrap>  
@@ -18,6 +19,7 @@ export const Modal = ({
         tabIndex="-1"
         aria-modal="true"
         className="modal-cover"
+        onClick={onClickOutside}
       >
         <div className="modal-area" ref={modalRef}>
           <button   //close 버튼
@@ -34,7 +36,7 @@ export const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            <LoginForm /> 
+            <LoginForm onsubmit = { onSubmit }/> 
           </div>
         </div>
       </aside>

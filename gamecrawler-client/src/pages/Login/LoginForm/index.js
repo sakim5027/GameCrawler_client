@@ -1,7 +1,9 @@
 //작성자:김슬안
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom' 
+import { Link, Route } from 'react-router-dom' 
+import { FindIdAndPwd } from '../../findIdAndPwd'
+import { Signup } from '../../signup'
 
 
 export class LoginForm extends React.Component{
@@ -49,10 +51,9 @@ export class LoginForm extends React.Component{
         this.setState({
           errorMessage: "이메일 또는 비밀번호가 일치하지 않습니다."
         })
-        alert(err)
+        
       });
   }
-  
 
   render(){
     return (
@@ -81,10 +82,13 @@ export class LoginForm extends React.Component{
           </div>
           <div className="buttonField">
               <button className="loginSubmitBtn" onClick = {this.loginRequestHandler}>Login</button>
-              <button className="loginSubmitBtn">회원가입</button>
-              <Link to="/findIdAndPwd">
-                <button className="loginSearchBtn" onClick={this.props.closeModal}>아이디/비밀번호 찾기</button>
+              <Link to="/signup">
+                <button className="loginSubmitBtn">회원가입</button>
               </Link>
+              <Link to="/findIdAndPwd">
+                <button className="loginSearchBtn">아이디/비밀번호 찾기</button>
+              </Link>
+              
             </div>
         </div>
         </div>

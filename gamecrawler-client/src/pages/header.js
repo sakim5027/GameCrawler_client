@@ -30,9 +30,7 @@ render() {
     // const {isLogin} = this.state
     
     const triggerText = 'Login';
-    const onSubmit = (event) => {
-        event.preventDefault(event);
-    };
+    
     
     return (
         <nav id="nav" className = "nav">
@@ -56,7 +54,7 @@ render() {
                 )} */}
                 <li className="loginUser"> username</li>
                 <li><Link to="/mypage">My page</Link></li>
-                <li><Link to="/login"><Container triggerText={triggerText} onSubmit={onSubmit}/></Link></li>
+                <li><Link to="/login"><Container triggerText={triggerText} /></Link></li>
 
             </ul>
             <a href="javascript:void(0);" className="navListBtn" onClick={this.barHandler}>  {/* 이 버튼을 누르면 목록이 나타나도록 js 적용*/}
