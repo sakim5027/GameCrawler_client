@@ -1,3 +1,4 @@
+// 작성자:김현영
 import React from 'react';
 import './App.css';
 import Header from './pages/header';
@@ -13,7 +14,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLogin: true,
+      isLogin: false,
       userinfo: null
     }
   };
