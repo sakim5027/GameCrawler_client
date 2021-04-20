@@ -40,7 +40,7 @@ render() {
                 <li><Link to="/statistics">통계</Link></li>
             </ul>
             <ul className="navLoginMenu"> 
-                {/* {isLogin? (
+                {/* {this.props.isLogin? (
                     <div>
                     <li> {nickname}</li>
                     <li><Link to="/mypage">My page</Link></li>
