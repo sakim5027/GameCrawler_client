@@ -108,6 +108,16 @@ input[type='text'] {
   border-radius: 10px;
 }
 
+input[type='password'] {
+  background-color: var(--input-color);
+  height: 30px;
+  border:none;
+  text-align: center;
+  outline: none;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
 .topContainer{
   display: flex;
   justify-content: center;
@@ -212,12 +222,56 @@ input[type='text'] {
   color:var(--text-color);
 }
 .submitBtn:hover{
-  background-color:var(--text-color-dark);
+  background-color: var(--accent-color);
 }
 .alert-box {
   color: var(--alert-color);
   font-weight: 500;
   font-size: 0.8rem
+}
+.signinContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 70vh;
+  background-color: var(--background-color-down);
+  border-radius: 10px;
+  padding: 28px;
+  opacity: 0.8; 
+  font-weight: 900;
+}
+.signupIdInput {
+  background-color: var(--input-color);
+  height: 30px;
+  width: 392px;
+  border:none;
+  text-align: center;
+  outline: none;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.signupInput {
+  background-color: var(--input-color);
+  height: 30px;
+  width: 520px;
+  border:none;
+  text-align: center;
+  outline: none;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.checkBtn{
+  width: 20%;
+  height: 30px;
+  background-color: var(--background-color);
+  border: none;
+  border-radius: 8px;
+  color:var(--text-color);
+}
+.checkBtn:hover{
+  background-color:var(--text-color-dark);
 }
 
 /* 레이아웃을 반응형으로 만들 때는 media query를 사용한다. mdn media queries에서 확인 가능

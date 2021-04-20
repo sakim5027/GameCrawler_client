@@ -25,9 +25,7 @@ render() {
 
     //슬안님 작성 부분
     const triggerText = 'Login';
-    const onSubmit = (event) => {
-        event.preventDefault(event);
-    };
+    
     
     return (
         <nav id="nav" className = "nav">
@@ -47,7 +45,7 @@ render() {
                         <li><Link to="/">Logout</Link></li>
                     </div>
                 ):(
-                    <div><li><Link to="/login"><Container triggerText={triggerText} onSubmit={onSubmit}/></Link></li></div>
+                    <div><li><Link to="/login"><Container triggerText={triggerText}/></Link></li></div>
                 )}
             </ul>
             <a href="#" className="navListBtn" onClick={this.navBarHandler}>  {/*} 이 버튼을 누르면 목록이 나타나도록 js 적용 */}

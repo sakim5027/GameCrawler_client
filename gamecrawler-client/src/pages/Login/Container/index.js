@@ -15,10 +15,21 @@ export class Container extends Component{
 
   closeModal = () => {
     this.setState({ isShown: false }); //closeModal이 실행되면 state가 false로 바뀜
+    this.toggleScrollLock();
   };
 
   toggleScrollLock = () => { //바탕화면 스크롤 lock
     document.querySelector('html').classList.toggle('scroll-lock');
+  };
+
+  onSubmit = (event) => {
+    event.preventDefault(event);
+    this.closeModal();
+  };
+
+  onClickOutside = (event) => {
+    if (this.modal && this.modal.contains(event.target)) return;
+    this.closeModal();
   };
 
 
@@ -32,10 +43,11 @@ export class Container extends Component{
         />
 
         {this.state.isShown ? (<Modal
-          onSubmit={this.props.onSubmit}
+          onSubmit={this.onSubmit}
           modalRef={(n) => (this.modal = n)}
           buttonRef={(n) => (this.closeButton = n)} 
           closeModal={this.closeModal}
+          onClickOutside={this.onClickOutside}
         />) : null}
       </React.Fragment>
       
