@@ -3,7 +3,6 @@ import React from 'react';
 import './App.css';
 import Header from './pages/header';
 import Footer from './pages/footer';
-import Login from './pages/Login/login';
 import Mypage from './pages/mypage'
 import Reviews from './pages/reviews'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
@@ -18,7 +17,26 @@ class App extends React.Component {
       isLogin: false,
       userinfo: null
     }
+    this.loginHandler = this.loginHandler.bind(this);
+    this.logoutHandler = this.logoutHandler.bind(this);
+    this.setUserInfo = this.setUserInfo.bind(this);
   };
+
+  loginHandler() {
+    this.setState({
+      isLogin: true,
+    });
+  }
+
+  setUserInfo(object) {
+    this.setState({ userData: object });
+  }
+
+  logoutHandler() {
+    this.setState({
+      isLogin: false,
+    });
+  }
 
   render(){
     const {isLogin} = this.state;

@@ -2,8 +2,6 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, Route } from 'react-router-dom' 
-import { FindIdAndPwd } from '../../findIdAndPwd'
-import { Signup } from '../../signup'
 
 
 export class LoginForm extends React.Component{
@@ -20,9 +18,9 @@ export class LoginForm extends React.Component{
     
   }
 
-  inputHandler = (key) => (e) => {
-    this.setState({ [key]: e.target.value });
-  };
+  inputHandler(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
   loginRequestHandler() {
     axios
@@ -36,7 +34,7 @@ export class LoginForm extends React.Component{
       )
       .then((res) => {
         this.props.loginHandler(true);
-        return axios.get('https://localhost:4000/users/userinfo', {
+        return axios.get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/info', {
           withCredentials: true,
         });
       })
@@ -57,14 +55,14 @@ export class LoginForm extends React.Component{
 
   render(){
     return (
-      <form >
+      <form onSubmit={this.props.onSubmit}>
         <div className="topContainer">
         <div className="loginContainer">
           <h2>Login</h2>
           <div className="loginField">
             <div className = "subTitle">ID</div>
             <input 
-              name="user_id" 
+              name="id" 
               type="text" 
               placeholder="Enter your ID"
               onChange={(e) => this.inputHandler(e)}
@@ -83,10 +81,10 @@ export class LoginForm extends React.Component{
           <div className="buttonField">
               <button className="loginSubmitBtn" onClick = {this.loginRequestHandler}>Login</button>
               <Link to="/signup">
-                <button className="loginSubmitBtn">회원가입</button>
+                <button className="loginSubmitBtn" onClick = {this.props.closeModal}>회원가입</button>
               </Link>
               <Link to="/findIdAndPwd">
-                <button className="loginSearchBtn">아이디/비밀번호 찾기</button>
+                <button className="loginSearchBtn" onClick = {this.props.closeModal}>아이디/비밀번호 찾기</button>
               </Link>
               
             </div>
