@@ -71,11 +71,11 @@ a{
 }
 
 .navListBtn{
-  position: absolute; /* 화면 사이즈가 조정되는 것에 상관없이 위치를 정해놓음 */
+  position: absolute;  /*화면 사이즈가 조정되는 것에 상관없이 위치를 정해놓음 */
   right:32px;
-  font-size:24px;
+  font-size:24px; 
   color: var(--text-color);
-  display: none;      /* 화면 사이즈가  768px 이상일 때는 버튼 숨기기 */
+  display: none;      /*화면 사이즈가  768px 이상일 때는 버튼 숨기기 */
   
 }
 
@@ -106,6 +106,7 @@ input[type='text'] {
   font-size: 1rem;
   border-radius: 10px;
 }
+
 input[type='password'] {
   background-color: var(--input-color);
   height: 30px;
@@ -116,16 +117,10 @@ input[type='password'] {
   border-radius: 10px;
 }
 
-/* .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color:#FEFCFF;
-} */
 .topContainer{
   display: flex;
   justify-content: center;
+  padding: 30px;
 }
 .findContainer {
   display: flex;

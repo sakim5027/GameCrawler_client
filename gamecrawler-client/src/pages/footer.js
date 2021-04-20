@@ -1,3 +1,4 @@
+// 작성자:김현영
 import React from 'react';
 
 function Footer() {
