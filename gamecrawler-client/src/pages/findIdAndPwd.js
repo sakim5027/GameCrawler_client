@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 
-export class FindIdAndPwd extends React.Component {
+class FindIdAndPwd extends React.Component {
     constructor(props){
         super(props);
         this.state={
@@ -24,7 +24,7 @@ export class FindIdAndPwd extends React.Component {
             this.setState({idMessage: "이메일을 입력해주세요."})
         }else{
             axios
-            .post('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/find-id',
+            .post('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/find-id', //env 에 서버 주소 적어놓고 갖다 쓰기
                 {email: this.state.email},{withCredentials:true}
             )
             .then(res =>{
