@@ -20,7 +20,7 @@ export class Modal extends Component{
           tabIndex="-1"
           aria-modal="true"
           className="modal-cover"
-          onClick={this.props.closeModal}
+          
         >
           <div className="modal-area" ref={this.props.modalRef}>
             <button   //close 버튼
