@@ -25,9 +25,7 @@ render() {
 
     //슬안님 작성 부분
     const triggerText = 'Login';
-    const onSubmit = (event) => {
-        event.preventDefault(event);
-    };
+    
     
     return (
         <nav id="nav" className = "nav">
@@ -51,7 +49,7 @@ render() {
                 )} */}
                 <li className="loginUser"> username</li>    {/* userinfo에서 가져온 nickname을 넣어야하는데 어떻게 가져오지? */}
                 <li><Link to="/mypage">My page</Link></li>
-                <li><Link to="/login"><Container triggerText={triggerText} onSubmit={onSubmit}/></Link></li>
+                <li><Link to="/login"><Container triggerText={triggerText} /></Link></li>
 
             </ul>
             <a href="#" className="navListBtn" onClick={this.navBarHandler}>  {/*} 이 버튼을 누르면 목록이 나타나도록 js 적용 */}

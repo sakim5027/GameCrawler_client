@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class FindIdAndPwd extends React.Component {
+export class FindIdAndPwd extends React.Component {
     constructor(props){
         super(props);
         this.state={
