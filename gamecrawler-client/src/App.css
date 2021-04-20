@@ -47,8 +47,9 @@ a{
   background-color: var(--accent-color);
   border-radius : 4px; /*둥근모서리로 만들기*/
 }
-.navLoginMenu{
-  display:flex;
+
+.navLoginMenu div{
+  display:flex ;
   list-style: none;
   color: var(--text-color);
   padding-left:0;
@@ -61,7 +62,7 @@ a{
   border-radius: 4px;
 
 }
-.navLoginBtn{   /* 로그인 시 유저 이름을 표시하는 것에는 hover 필요 없음 */
+.navLoginBtn{   
   background-color:transparent;
   border: none;
   text-decoration: none;  /*기본적으로 anchor tag에 들어가는 데코를 없애고 컬러 변경해줌 */
@@ -231,22 +232,22 @@ input[type='text'] {
       flex-direction: column; /* 로그인메뉴를 한 열에 배열 */
       align-items: center; /*로고는 왼쪽에 놓더라도 메뉴들은 가운데에 위치시킨다*/
       width: 100%; /* 메뉴의 width 자체가 작게 설정되어 있어서 가운데로 오지 않는 문제 수정 */
-      /* display: none;   화면에 작아졌을 때는 로그인 메뉴를 숨기고 햄버거 버튼을 눌렀을 때 나타나게 한다 */
+      display: none;   /*화면에 작아졌을 때는 로그인 메뉴를 숨기고 햄버거 버튼을 눌렀을 때 나타나게 한다*/
   }
   .navMenu li{
       width: 100%; /* 마우스 호버했을 때 꽉 차게 표시하도록 한다. */
       text-align: center; /* width 수정 시 가운데 정렬되지 않는 문제 수정 */
   }
   
-  .navLoginMenu{
+  .navLoginMenu div{
       flex-direction: column;
       align-items: center;
       width: 100%;
-      /* display: none; */
+      display: none;
   }
   .navLoginMenu li{
-      width: 100%;
-      text-align: center;
+    width: 100%;
+    text-align: center; 
   }
   
   .navListBtn {
@@ -255,8 +256,8 @@ input[type='text'] {
   .navMenu.active{
       display:flex;
   }
-  .navLoginMenu.active{
-      display:flex;
+  .navLoginMenu div.active{
+    display:flex;
   }
   .loginUser {
     display:none;

@@ -16,8 +16,8 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLogin: false,
-      userinfo: null,
+      isLogin: true,
+      userinfo: 'kim coding',
     }
   }
   render(){
@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
       <div className="App">
-      <Header isLogin={this.state.isLogin} />
+      <Header isLogin={this.state.isLogin} userinfo={this.state.userinfo}/>
       <Switch>
         <Route exact path="/" render={ ()=>{
           if(isLogin){
