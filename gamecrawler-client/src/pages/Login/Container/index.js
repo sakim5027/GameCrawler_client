@@ -3,9 +3,19 @@ import React, { Component } from 'react';
 import { Modal } from '../Modal';
 import TriggerButton from '../TriggerButton'; //헤더의 로그인 버튼
 
-export class Container extends Component{
-  state = { isShown:false };  //기본값은 false
 
+export class Container extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      isShown: false //기본값은 false
+    }
+    this.showModal = this.showModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.toggleScrollLock = this.toggleScrollLock.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+  
   showModal = () => {
     this.setState({ isShown: true }, () => { //showModal이 실행되면 state가 true로 바뀜
       this.closeButton.focus(); //포커스는 닫기 버튼에 가있음
@@ -13,7 +23,8 @@ export class Container extends Component{
     this.toggleScrollLock();//모달이 실행되는동안 바탕화면은 lock됨
   };
 
-  closeModal = () => {
+  closeModal = (e) => {
+    e.stopPropagation();
     this.setState({ isShown: false }); //closeModal이 실행되면 state가 false로 바뀜
     this.toggleScrollLock();
   };
@@ -24,11 +35,6 @@ export class Container extends Component{
 
   onSubmit = (event) => {
     event.preventDefault(event);
-    this.closeModal();
-  };
-
-  onClickOutside = (event) => {
-    if (this.modal && this.modal.contains(event.target)) return;
     this.closeModal();
   };
 
@@ -47,7 +53,6 @@ export class Container extends Component{
           modalRef={(n) => (this.modal = n)}
           buttonRef={(n) => (this.closeButton = n)} 
           closeModal={this.closeModal}
-          onClickOutside={this.onClickOutside}
         />) : null}
       </React.Fragment>
       
