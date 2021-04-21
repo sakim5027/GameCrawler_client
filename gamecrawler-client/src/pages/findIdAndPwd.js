@@ -1,6 +1,7 @@
 // 작성자:김현영
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class FindIdAndPwd extends React.Component {
     constructor(props){
@@ -100,7 +101,7 @@ class FindIdAndPwd extends React.Component {
                     <button className = "searchBtn" onClick ={this.searchPwdHandler}>조회</button>
                     <div className="alert-box">{this.state.pwdMessage}</div> 
                 </div>
-                <button className="submitBtn">로그인하기</button> 
+                <Link to="/login"><button className="submitBtn">로그인하기</button></Link>
             </div>
             </div>
         )
