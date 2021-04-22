@@ -31,7 +31,7 @@ render() {
         <nav id="nav" className = "nav">
             <div className="navLogo">
                 <FontAwesomeIcon icon={ faConnectdevelop} />
-                <Link to="/"> Game Crawler </Link> {/* a태그와 비슷한데 history에 스택이 저장됨 */}
+                <Link to="/"> Game Crawler </Link> {/* a태그와 비슷한데 history에 스택이 저장됨 */}     
             </div>
             <ul className="navMenu">
                 <li><Link to="/reviews">리뷰게시판</Link></li>

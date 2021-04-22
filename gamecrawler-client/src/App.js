@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import FindIdAndPwd from './pages/findIdAndPwd';
 import { Container } from './pages/Login/Container'
 import { Signup } from './pages/signup';
-import GameList from './pages/Home/gameList';   //home
+import GameSearch from './pages/Home/homeGameSearch'
 
 
 class App extends React.Component {
@@ -31,12 +31,12 @@ class App extends React.Component {
   }
 
   setUserInfo(object) {
-    this.setState({ userData: object });
+    this.setState({ userinfo: object });
   }
 
   logoutHandler() {
     this.setState({
-      isLogin: false,
+      isLogin: true,
     });
   }
 
@@ -47,19 +47,23 @@ class App extends React.Component {
       <div className="App">
       <Header isLogin={this.state.isLogin} userinfo={this.state.userinfo}/>
       <Switch>
-        <Route exact path="/" render={ ()=>{
+        {/* <Route exact path="/" render={ ()=>{
           if(isLogin){
-            return <Redirect to="/"/>
-          }return <Redirect to="/login"/>
-      }}
-    />
+            return <Redirect to="/mypage"/>
+          }return <Redirect to="/home"/>
+      }} 
+     /> */}
+        <Route exact path="/"><Redirect to="/home"/></Route>
         <Route path="/login" component={Container}></Route>
         <Route path="/mypage"><Mypage/></Route>
         <Route path="/reviews"><Reviews/></Route>
         <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
-        <Route path="/signup" component={ Signup }></Route>
+        <Route path="/signup" component={Signup}></Route>
+        <Route path="/home"><GameSearch/></Route>
+
       </Switch>
       </div>
+
       <Footer/>
       </BrowserRouter>
     )
