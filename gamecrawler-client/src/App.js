@@ -7,7 +7,6 @@ import Mypage from './pages/mypage'
 import Reviews from './pages/reviews'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import FindIdAndPwd from './pages/findIdAndPwd';
-import { Container } from './pages/Login/Container'
 import { Signup } from './pages/signup';
 import GameSearch from './pages/Home/homeGameSearch'
 
@@ -54,7 +53,6 @@ class App extends React.Component {
       }} 
      /> */}
         <Route exact path="/"><Redirect to="/home"/></Route>
-        <Route path="/login" component={Container}></Route>
         <Route path="/mypage"><Mypage/></Route>
         <Route path="/reviews"><Reviews/></Route>
         <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
