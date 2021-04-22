@@ -16,7 +16,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLogin: true,
+      isLogin: false,
       userinfo: '',
     }
     this.loginHandler = this.loginHandler.bind(this);
