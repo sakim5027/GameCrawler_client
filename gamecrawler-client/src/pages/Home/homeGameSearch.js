@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import { fakeData } from './fakeData';
-// import Top5Games from './top5Gmaes'
+import Top5Games from './top5Gmaes'
 
 function HomeGameSearch() {
     const [filteredEl, setFilteredEl] = useState('');   //필터링된 게임을 저장
@@ -31,7 +31,7 @@ function HomeGameSearch() {
                     }).map((el) =>{
                         return (
                             <div className= "games">
-                                <p key={el.game_code}><img src={el.img} alt="game" width="300px" height="400px" ></img></p>       
+                                <p key={el.game_code}><img src={el.img} alt="game" width="150px" height="200px" ></img></p>       
                             </div>
                         )
                     })
