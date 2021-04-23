@@ -45,7 +45,7 @@ render() {
                         <li><Link to="/">Logout</Link></li>
                     </div>
                 ):(
-                    <div><li><Link to="/login"><Container triggerText={triggerText}/></Link></li></div>
+                    <div><li><Container triggerText={triggerText}/></li></div>
                 )}
             </ul>
             <a href="#" className="navListBtn" onClick={this.navBarHandler}>  {/*} 이 버튼을 누르면 목록이 나타나도록 js 적용 */}

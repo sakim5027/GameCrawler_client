@@ -2,6 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { Container } from './Login/Container'
 
 class FindIdAndPwd extends React.Component {
     constructor(props){
@@ -84,6 +85,7 @@ class FindIdAndPwd extends React.Component {
 
     render(){
         const {email,emailForPwd,userid} = this.state;
+        let triggerText = 'Login';
         return(
             <div className="topContainer">
             <div className="findContainer">
@@ -101,7 +103,7 @@ class FindIdAndPwd extends React.Component {
                     <button className = "searchBtn" onClick ={this.searchPwdHandler}>조회</button>
                     <div className="alert-box">{this.state.pwdMessage}</div> 
                 </div>
-                <Link to="/login"><button className="submitBtn">로그인하기</button></Link>
+                <div className = "submitBtn"><Container triggerText={triggerText} /></div>
             </div>
             </div>
         )
