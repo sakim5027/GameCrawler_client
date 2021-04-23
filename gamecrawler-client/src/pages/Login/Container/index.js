@@ -38,7 +38,7 @@ export class Container extends Component{
     this.closeModal();
   };
 
-
+  
   render(){
     return (
       <React.Fragment>
