@@ -313,6 +313,7 @@ input[type='password'] {
   margin:30px 0px 10px 10px;
 }
 .filteredGames{
+  max-height: 850px;
   display:flex;
   flex-flow:wrap;
   justify-content:start;
