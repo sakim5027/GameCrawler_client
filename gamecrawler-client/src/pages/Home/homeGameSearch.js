@@ -1,42 +1,46 @@
-import {useState} from 'react';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import { fakeData } from './fakeData';
+// import Top5Games from './top5Gmaes'
 
 function HomeGameSearch() {
-    const [ game, setGame ] = useState('');
-    const gameDetailModal=()=>{
-        alert("Detail Page")
+    const [filteredEl, setFilteredEl] = useState('');   //필터링된 게임을 저장
+    const genreEl=["Point-and-click","Fighting","Shooter","Music"];         //나중에 장르 db도 있는지 봐야지
+    const genreOption= genreEl.map(el =>{return <option value={el}>{el}</option>});
+
+        return (
+            
+            <div className= "gameSearch">
+                <Top5Games/>
+                <h1>{filteredEl}</h1>
+                <div className="gameFilter">
+                    <br/>
+                    <select name="genrePicker" onChange={e=>{setFilteredEl(e.target.value)}}defaultValue="">
+                        <option value="">장르를 선택하세요</option>
+                        {genreOption}
+                    </select>
+                    <input type="text" placeholder="Search" onChange={e=>{setFilteredEl(e.target.value)}}/>
+                </div>
+                <div className="filteredGames">
+                {fakeData.filter(el =>{
+                    if(filteredEl===""){
+                        return el   
+                    }else if((el.title.toLowerCase().includes(filteredEl.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredEl.toLocaleLowerCase()))){
+                        return el
+                    }
+                    }).map((el) =>{
+                        return (
+                            <div className= "games">
+                                <p key={el.game_code}><img src={el.img} alt="game" width="300px" height="400px" ></img></p>       
+                            </div>
+                        )
+                    })
+                }
+                </div>
+            </div>
+        )
+
     }
 
-    return (
-        <div className= "gameSearch">
-            <div className="gameFilter">
-                <div className="filterBtns">
-                    <button className="filterBtn" value="" onClick={e=>{setGame(e.target.value)}}>Show all</button>
-                    <button className="filterBtn" value="sports" onClick={e=>{setGame(e.target.value)}}>Sports</button>
-                    <button className="filterBtn" value="roll-playing" onClick={e=>{setGame(e.target.value)}}>Roll-playing</button>
-                    <button className="filterBtn" value="action" onClick={e=>{setGame(e.target.value)}}>Action</button>
-                </div>
-                <input type="text" placeholder="Search" onChange={e =>{ setGame(e.target.value)}}/> {/* 이 부분을 fakeData에서 가져오는 게 아니라 db에서 일치하는 게 있는지 찾도록 해야 함 */}
-            </div>
-            <div className="filteredGames">
-            {fakeData.filter(el =>{
-                if(game ===""){
-                    return el      
-                }else if((el.title.toLowerCase().includes(game.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(game.toLocaleLowerCase()))){
-                    return el
-                }
-                }).map((el, key) =>{
-                    return (
-                        <div className= "games" key={key}>
-                            <p><img src={el.img} alt="game" width="150px" height="200px" onClick={gameDetailModal}></img></p>       
-                        </div>
-                    )
-                })
-            }
-            </div>
-        </div>
-    )
-
-}
 
 export default HomeGameSearch;
