@@ -21,6 +21,7 @@ class NewReview extends React.Component {
     submitHandler(e){
         alert('리뷰가 저장되었습니다.');
         e.preventDefault();
+        e.target.reset();
     }
     render(){
         const {story,graphic,hardness,soundEffect,ux } = this.state;
