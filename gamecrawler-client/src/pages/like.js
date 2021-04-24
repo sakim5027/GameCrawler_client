@@ -24,7 +24,7 @@ class Like extends React.Component{
         return (
             <div>
                 <button className = "likeBtn" onClick={this.likeHandler}>
-                    {like? <FontAwesomeIcon icon={faHeart}/> : <FontAwesomeIcon icon={fasHeart}/> }
+                    {like? <FontAwesomeIcon icon={fasHeart}/> : <FontAwesomeIcon icon={faHeart}/> }
                 </button>
             </div>
         )
