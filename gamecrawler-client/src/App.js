@@ -60,7 +60,7 @@ class App extends React.Component {
         <Route path="/reviews"><Reviews/></Route>
         <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
         <Route path="/signup" component={Signup}></Route>
-        <Route path="/home"><Like/></Route>
+        <Route path="/home"><HomeGameSearch/></Route>
 
       </Switch>
       </div>
