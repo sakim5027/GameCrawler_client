@@ -19,14 +19,15 @@ function HomeGameSearch() {
                     setGame(res.data)
                 }).catch(err =>alert(err))
         }, [])
+       
         return (
             
             <div className= "gameSearch">
                 <Top5Games/>
                 <div className="gameFilter">
                     <br/>
-                    <select name="genrePicker" onChange={e=>{setFilteredEl(e.target.value)}}defaultValue="">
-                        <option value="">게임 전체</option>
+                    <select className="genrePicker" name="genrePicker" onChange={e=>{setFilteredEl(e.target.value)}}defaultValue="">
+                        <option value="">All</option>
                         {genreOption}
                     </select>
                     <input type="text" placeholder="Search" onChange={e=>{setFilteredEl(e.target.value)}}/>
@@ -47,7 +48,8 @@ function HomeGameSearch() {
                             <div className= "games">
                                 <p key={el.game_code}>
                                     <img src={el.img} alt="game" width="150px" height="200px" ></img>
-                                    <Like/>
+                                    <Like />
+                                    
                                 </p>       
                             </div>
                         )
