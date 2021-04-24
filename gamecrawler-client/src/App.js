@@ -10,13 +10,15 @@ import FindIdAndPwd from './pages/findIdAndPwd';
 import { Signup } from './pages/signup';
 import GameSearch from './pages/Home/homeGameSearch'
 import NewReview from './pages/newReview'
+import HomeGameSearch from './pages/Home/homeGameSearch';
+import Like from './pages/like';
 
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLogin: false,
+      isLogin: true,
       userinfo: '',
     }
     this.loginHandler = this.loginHandler.bind(this);
@@ -58,7 +60,7 @@ class App extends React.Component {
         <Route path="/reviews"><Reviews/></Route>
         <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
         <Route path="/signup" component={Signup}></Route>
-        <Route path="/home"><GameSearch/></Route>
+        <Route path="/home"><HomeGameSearch/></Route>
 
       </Switch>
       </div>
