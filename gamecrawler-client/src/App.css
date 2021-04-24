@@ -384,6 +384,14 @@ input[type='password'] {
   padding: 10px;
   
 }
+.likeBtn{
+  width: 30px;
+  height:30px;
+  font-size: 30px;
+  color:#E41B17;
+  border: none;
+  background-color: white;
+}
 
 
 
