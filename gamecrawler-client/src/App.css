@@ -384,6 +384,21 @@ input[type='password'] {
   padding: 10px;
   
 }
+.likeBtn{
+  position: relative;
+  bottom: 40px;
+  left: 110px;
+  width: 30px;
+  height:30px;
+  font-size: 30px;
+  color:#E41B17;
+  border: none;
+  background-color: transparent;
+}
+.likeBtn :hover{
+  cursor: pointer;
+}
+
 
 
 

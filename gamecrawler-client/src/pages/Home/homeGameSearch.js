@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import { fakeData } from './fakeData';
-import Top5Games from './top5Gmaes'
+import Top5Games from './top5Gmaes';
+import Like from '../like'
 
 function HomeGameSearch() {
     const [game, setGame] = useState([]);
@@ -22,11 +23,10 @@ function HomeGameSearch() {
             
             <div className= "gameSearch">
                 <Top5Games/>
-                <h1>{filteredEl}</h1>
                 <div className="gameFilter">
                     <br/>
                     <select name="genrePicker" onChange={e=>{setFilteredEl(e.target.value)}}defaultValue="">
-                        <option value="">장르를 선택하세요</option>
+                        <option value="">게임 전체</option>
                         {genreOption}
                     </select>
                     <input type="text" placeholder="Search" onChange={e=>{setFilteredEl(e.target.value)}}/>
@@ -45,7 +45,10 @@ function HomeGameSearch() {
                     }).map((el) =>{
                         return (
                             <div className= "games">
-                                <p key={el.game_code}><img src={el.img} alt="game" width="150px" height="200px" ></img></p>       
+                                <p key={el.game_code}>
+                                    <img src={el.img} alt="game" width="150px" height="200px" ></img>
+                                    <Like/>
+                                </p>       
                             </div>
                         )
                     })
