@@ -57,7 +57,7 @@ class App extends React.Component {
      /> */}
         <Route exact path="/"><Redirect to="/home"/></Route>
         <Route path="/mypage"><Mypage/></Route>
-        <Route path="/reviews"><Reviews/></Route>
+        <Route path="/reviews"><NewReview/></Route>
         <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
         <Route path="/signup" component={Signup}></Route>
         <Route path="/home"><HomeGameSearch/></Route>
