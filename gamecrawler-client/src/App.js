@@ -10,6 +10,7 @@ import FindIdAndPwd from './pages/findIdAndPwd';
 import { Signup } from './pages/signup';
 import GameSearch from './pages/Home/homeGameSearch'
 import NewReview from './pages/newReview'
+import HomeGameSearch from './pages/Home/homeGameSearch';
 
 
 class App extends React.Component {
@@ -58,7 +59,7 @@ class App extends React.Component {
         <Route path="/reviews"><Reviews/></Route>
         <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
         <Route path="/signup" component={Signup}></Route>
-        <Route path="/home"><GameSearch/></Route>
+        <Route path="/home"><NewReview/></Route>
 
       </Switch>
       </div>
