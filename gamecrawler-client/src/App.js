@@ -21,7 +21,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLogin: true,
-      userData: '',
+      userData: {
+        userId: "gamecrawler",
+        pw: "gameCrawler01",
+        nickname: "Crawlers",
+        email: "theCrawlers03@gmail.com",
+        genre: "FPS"
+      }
     }
     this.loginHandler = this.loginHandler.bind(this);
     this.logoutHandler = this.logoutHandler.bind(this);
@@ -50,14 +56,14 @@ class App extends React.Component {
     return (
       <BrowserRouter>
       <div className="App">
-      <Header isLogin={this.state.isLogin} userinfo={this.state.userinfo}/>
+      <Header isLogin={this.state.isLogin} userinfo={this.state.userinfo} logoutHandler={this.logoutHandler}/>
       
       {isLogin ? (
         <Switch>
       
           <Route exact path="/"><Redirect to="/home"/></Route>
-          <Route path="/mypage"><Mypage logoutHandler={this.logoutHandler} userData={this.state.userData}/></Route>
-          <Route path="/modify"><ModifyUserInfo/></Route>
+          <Route path="/mypage"><Mypage userData={this.state.userData}/></Route>
+          <Route path="/modify"><ModifyUserInfo userData={this.state.userData}/></Route>
           <Route path="/reviews"><Reviews/></Route>
           <Route path="/home"><HomeGameSearch/></Route>
   

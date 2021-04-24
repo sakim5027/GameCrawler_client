@@ -3,16 +3,9 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 
+
 function Mypage(props) {
-  function logoutRequester() {
-    axios
-      .post('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/logout', null, {
-        'Content-Type': 'application/json',
-        withCredentials: true,
-      })
-      .then(() => props.logoutHandler())
-      .catch((e) => alert(e));
-  }
+  
   return props.userData == null ? (
     <div>waiting...</div>
   ) : (
@@ -56,9 +49,16 @@ function Mypage(props) {
             <div>
             <Link to='/modify'><input type='button' className = "submitBtn" value='회원정보 수정' /></Link>
             </div>
-            
-
-
+        </div>
+        <br />
+        <div className = "mypageSmallContainer">
+            <div>
+                <h2>My Reviews</h2>
+                <br />
+                <hr />
+                <br />
+            </div>
+            <br />
         </div>
         
       </div>

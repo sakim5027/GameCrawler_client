@@ -108,7 +108,7 @@ export class Signup extends React.Component {
     //장르 변경 셀렉트박스 핸들링
     handleGenreChange(event) {
         this.setState({selectedOption: event.target.value});
-      }
+    }
 
     //서버로 가입 양식 제출
     handleSubmit = (e) => {
@@ -249,7 +249,7 @@ export class Signup extends React.Component {
                 <br />
                 <div>
                     <label>Favourite Genre</label>
-                    <select className = "selectBox" id="genre" value={this.state.selectedOption} onChange={this.handleGenreChange}>
+                    <select className = "selectBox" name="genre" value={this.state.selectedOption} onChange={this.handleGenreChange}>
                         { this.state.options.map((option) => <option>{option}</option>)}
                     </select>
                 </div>
