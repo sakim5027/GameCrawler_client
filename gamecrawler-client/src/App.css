@@ -355,21 +355,30 @@ input[type='password'] {
   /* align-items: center; */
 
 }
-.newReviewRate label+label{
-  margin-left:2em;
+
+.newReviewRate ul{
+  padding : 10px;
+  /* border: solid 1px; */
+  width: 100%;
+  background-color: var(--accent-color);
+}
+.newReviewRate label{
+  margin:0 2em;
+  font-weight:400;
 }
 .newReviewRate li{
   list-style: none;
 }
+
 .newReviewRate span{
   display:inline-block;
-  width: 50px;
+  width: 70px;
   margin-right: 4em;
   text-align: right;
 }
 
 .newReviewText{
-  width: 90%;
+  width: 100%;
   height: 8em;
   text-align: start;
   padding: 10px;
@@ -425,6 +434,10 @@ input[type='password'] {
   }
   .gameFilter input{
     width:100%;
+  }
+  .newReviewRate :not(span){
+    display:flex;
+    flex-direction: column;
   }
 }
 
