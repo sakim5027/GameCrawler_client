@@ -39,10 +39,12 @@ export class LoginForm extends React.Component{
         });
       })
       .then((res) => {
-        let { user_id, email } = res.data.data;
+        let { password, nickname, email, genre } = res.data.data;
         this.props.setUserInfo({
-          user_id,
+          password,
+          nickname,
           email,
+          genre
         });
       })
       .catch((err) => {

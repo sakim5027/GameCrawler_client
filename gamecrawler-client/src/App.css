@@ -398,6 +398,29 @@ input[type='password'] {
 .likeBtn :hover{
   cursor: pointer;
 }
+.mypageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  border-radius: 10px;
+  padding: 28px;
+  opacity: 0.8; 
+  font-weight: 900;
+}
+.mypageSmallContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 70vh;
+  background-color: var(--background-color-down);
+  border-radius: 10px;
+  padding: 28px;
+  opacity: 0.8; 
+  font-weight: 900;
+}
+
 
 
 

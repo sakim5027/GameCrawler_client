@@ -1,5 +1,6 @@
 // 작성자:김현영
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom'
 import './App.css';
 import Header from './pages/header';
 import Footer from './pages/footer';
@@ -12,6 +13,7 @@ import GameSearch from './pages/Home/homeGameSearch'
 import NewReview from './pages/newReview'
 import HomeGameSearch from './pages/Home/homeGameSearch';
 import Like from './pages/like';
+import ModifyUserInfo from './pages/modifyUserInfo'
 
 
 class App extends React.Component {
@@ -19,7 +21,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLogin: true,
-      userinfo: '',
+      userData: '',
     }
     this.loginHandler = this.loginHandler.bind(this);
     this.logoutHandler = this.logoutHandler.bind(this);
@@ -33,7 +35,7 @@ class App extends React.Component {
   }
 
   setUserInfo(object) {
-    this.setState({ userinfo: object });
+    this.setState({ userData: object });
   }
 
   logoutHandler() {
@@ -42,27 +44,36 @@ class App extends React.Component {
     });
   }
 
+  //슬안: 로그인 상태에 따라 접속 가능한 페이지가 달라지도록 설정
   render(){
     const {isLogin} = this.state;
     return (
       <BrowserRouter>
       <div className="App">
       <Header isLogin={this.state.isLogin} userinfo={this.state.userinfo}/>
-      <Switch>
-        {/* <Route exact path="/" render={ ()=>{
-          if(isLogin){
-            return <Redirect to="/mypage"/>
-          }return <Redirect to="/home"/>
-      }} 
-     /> */}
-        <Route exact path="/"><Redirect to="/home"/></Route>
-        <Route path="/mypage"><Mypage/></Route>
-        <Route path="/reviews"><Reviews/></Route>
-        <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
-        <Route path="/signup" component={Signup}></Route>
-        <Route path="/home"><HomeGameSearch/></Route>
+      
+      {isLogin ? (
+        <Switch>
+      
+          <Route exact path="/"><Redirect to="/home"/></Route>
+          <Route path="/mypage"><Mypage logoutHandler={this.logoutHandler} userData={this.state.userData}/></Route>
+          <Route path="/modify"><ModifyUserInfo/></Route>
+          <Route path="/reviews"><Reviews/></Route>
+          <Route path="/home"><HomeGameSearch/></Route>
+  
+        </Switch>
+        ) : (
+        <Switch>
+      
+          <Route exact path="/"><Redirect to="/home"/></Route>
+          <Route path="/reviews"><Reviews/></Route>
+          <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
+          <Route path="/signup" component={Signup}></Route>
+          <Route path="/home"><HomeGameSearch/></Route>
 
-      </Switch>
+        </Switch>
+        )}
+      
       </div>
       <Footer/>
       </BrowserRouter>
