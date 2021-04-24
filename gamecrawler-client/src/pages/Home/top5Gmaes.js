@@ -18,7 +18,7 @@ function Top5Games(){
         <div>
             <ul>
                 {
-                    top5.map(top5 => <li key={top5.game_code}>{game_code}</li>)     //나중에 gmae poster로 변경하기
+                   // top5.map(top5 => <li >{game_code}</li>)     //나중에 game poster로 변경하기
                 }
             </ul>
         </div>
