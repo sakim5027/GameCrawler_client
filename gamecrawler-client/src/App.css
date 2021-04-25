@@ -298,7 +298,7 @@ select {
   -moz-appearance: none;
   appearance: none;
   margin-left: 25px;
-  padding: .3em 3.4em; /* 여백으로 높이 설정 */
+  padding: .3em .4em; /* 여백으로 높이 설정 */
 }
 
 

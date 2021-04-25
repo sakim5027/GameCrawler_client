@@ -61,7 +61,7 @@ class ModifyUserInfo extends React.Component{
 
     //장르 변경 셀렉트박스 핸들링
     handleGenreChange(event) {
-        this.setState({selectedOption: event.target.value});
+        this.setState({genre: event.target.value});
     }
 
     //수정된 회원정보 저장
@@ -178,7 +178,7 @@ class ModifyUserInfo extends React.Component{
 
 const selectList = {
     selectedOption : "",
-    options: ['Select Genre','Adventure','Action','Arcade','FPS','Horror','Puzzle','Role Playing','Sport','Simulator']
+    options: ['Select Genre','Adventure','Action','Arcade','FPS','Fighting','Horror','Music','Puzzle','Point-and-click','Platform','Puzzle','Role-playing (RPG)','Real Time Strategy (RTS)','Racing','Sport','Simulator','Shooter','Tactical','Visual Novel', 'Indie']
 }
 
 export default ModifyUserInfo;
