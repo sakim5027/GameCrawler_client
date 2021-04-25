@@ -15,10 +15,16 @@ function ReviewList(){
 
     if(review){
         return(
-            <li>
-                <div>review.game_name</div>
-                <div>review.user_id</div>
-            </li>
+            <div>
+                { review.map((el)=>{
+                    return(
+                        <li>
+                            <div>{el.game_name}</div>
+                            <div>{el.user_id}</div>
+                        </li>
+                    )}
+                )}
+            </div>
     
         )
     }
