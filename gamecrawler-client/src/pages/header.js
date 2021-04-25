@@ -5,15 +5,15 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faConnectdevelop } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom' //dev에 설치해야 함
 import { Container } from './Login/Container'
-
+import axios from 'axios';
 
 
 class Header extends React.Component {
     constructor(props){
         super(props);
-
-    this.navBarHandler = this.navBarHandler.bind(this);
-}
+        this.navBarHandler = this.navBarHandler.bind(this);
+        this.logoutRequester = this.logoutRequester.bind(this);
+    }
 
 navBarHandler(){
     const navMenu = document.querySelector(".navMenu");
@@ -21,6 +21,17 @@ navBarHandler(){
     navMenu.classList.toggle('active') //navMenu의 classList 중에 active 클래스를 토글링한다.
     navLoginMenuDiv.classList.toggle('active') 
 }
+
+//슬안: 로그아웃 기능 구현
+logoutRequester() {
+    axios
+      .post('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/logout', null, {
+        'Content-Type': 'application/json',
+        withCredentials: true,
+      })
+      .then(() => this.props.logoutHandler())
+      .catch((e) => alert(e));
+  }
 render() {
 
     //슬안님 작성 부분
@@ -42,7 +53,7 @@ render() {
                     <div>
                         <li className="loginUser"> {this.props.userinfo}</li>
                         <li><Link to="/mypage">My page</Link></li>
-                        <li><Link to="/">Logout</Link></li>
+                        <li><Link to="/"><input type='button' className="navLoginBtn" value='Logout' onClick = {this.logoutRequester} /></Link></li>
                     </div>
                 ):(
                     <div><li><Container triggerText={triggerText}/></li></div>

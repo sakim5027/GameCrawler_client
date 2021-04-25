@@ -13,12 +13,14 @@ export class Signup extends React.Component {
             email: "",
             genre: "",
             idCheck: "",
-            pwCheck: ""
+            pwCheck: "",
+            options: selectList.options
         };
         this.inputHandler = this.inputHandler.bind(this);
         this.checkID = this.checkID.bind(this);
         this.checkPW = this.checkPW.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleGenreChange = this.handleGenreChange.bind(this);
     }
 
     //인풋 핸들러
@@ -102,6 +104,11 @@ export class Signup extends React.Component {
             }
         }
     };
+
+    //장르 변경 셀렉트박스 핸들링
+    handleGenreChange(event) {
+        this.setState({selectedOption: event.target.value});
+    }
 
     //서버로 가입 양식 제출
     handleSubmit = (e) => {
@@ -240,14 +247,27 @@ export class Signup extends React.Component {
                 <br />
                 <br />
                 <br />
-                <br />
                 <div>
+                    <label>Favourite Genre</label>
+                    <select className = "selectBox" name="genre" value={this.state.selectedOption} onChange={this.handleGenreChange}>
+                        { this.state.options.map((option) => <option>{option}</option>)}
+                    </select>
+                </div>
+                <br />
+                <br />
+               
+                <div className = "buttonField">
                     <button onClick={this.handleSubmit} className = "submitBtn">가입하기</button>
                 </div>
             </div>
         </div>
         );
     }
+}
+
+const selectList = {
+    selectedOption : "",
+    options: ['Select Genre','Adventure','Action','Arcade','FPS','Horror','Puzzle','Role Playing','Sport','Simulator']
 }
 
 export default Signup;
