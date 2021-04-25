@@ -267,7 +267,7 @@ export class Signup extends React.Component {
 
 const selectList = {
     selectedOption : "",
-    options: ['Select Genre','Adventure','Action','Arcade','FPS','Horror','Puzzle','Role Playing','Sport','Simulator']
+    options: ['Select Genre','Adventure','Action','Arcade','FPS','Fighting','Horror','Music','Puzzle','Point-and-click','Platform','Puzzle','Role-playing (RPG)','Real Time Strategy (RTS)','Racing','Sport','Simulator','Shooter','Tactical','Visual Novel', 'Indie']
 }
 
 export default Signup;
