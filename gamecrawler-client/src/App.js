@@ -64,7 +64,7 @@ class App extends React.Component {
           <Route exact path="/"><Redirect to="/home"/></Route>
           <Route path="/mypage"><Mypage userData={this.state.userData}/></Route>
           <Route path="/modify"><ModifyUserInfo userData={this.state.userData}/></Route>
-          <Route path="/reviews"><Reviews/></Route>
+          <Route path="/reviews"><NewReview/></Route>
           <Route path="/home"><HomeGameSearch/></Route>
   
         </Switch>
