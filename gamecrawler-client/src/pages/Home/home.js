@@ -48,44 +48,45 @@ class Home extends React.Component{
 
     render(){
         const {gameGenre, games, filteredGames} = this.state;
-        const genreOption= gameGenre.map(el =>{return <option value={el.genre_name}>{el.genre_name}</option>});
+        //const genreOption= gameGenre.map(el =>{return <option value={el.genre_name}>{el.genre_name}</option>});
         
        return ( 
-            <div className= "gameSearch">  
-                <NewGames/>
-                <div className="gameFilter">
-                    <br/>
-                    <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
-                        <option value="">All</option>
-                        {genreOption}
-                    </select>
-                    <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/>
-                    {/* <input type="text" placeholder="Search"/>
-                    <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
+           <div>Hello World</div>
+            // <div className= "gameSearch">  
+            //     <NewGames/>
+            //     <div className="gameFilter">
+            //         <br/>
+            //         <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
+            //             <option value="">All</option>
+            //             {/* {genreOption} */}
+            //         </select>
+            //         <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/>
+            //         {/* <input type="text" placeholder="Search"/>
+            //         <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
                     
-                </div>
-                <div className="filteredGames">
-                {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
-                {games.filter(el =>{ 
-                    if(filteredGames===""){
-                        return el   
-                    }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
-                        return el
-                    }
-                    }).map((el) =>{
-                        return (
-                            <div className= "games">
-                                <p key={el.game_id}>
-                                    <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
-                                    <Like />
+            //     </div>
+            //     <div className="filteredGames">
+            //     {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
+            //     {games.filter(el =>{ 
+            //         if(filteredGames===""){
+            //             return el   
+            //         }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
+            //             return el
+            //         }
+            //         }).map((el) =>{
+            //             return (
+            //                 <div className= "games">
+            //                     <p key={el.game_id}>
+            //                         <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
+            //                         <Like />
                                     
-                                </p>       
-                            </div>
-                        )
-                    })
-                }
-                </div>
-            </div>
+            //                     </p>       
+            //                 </div>
+            //             )
+            //         })
+            //     }
+            //     </div>
+            // </div>
         )
     }
 }

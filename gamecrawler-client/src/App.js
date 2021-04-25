@@ -21,7 +21,7 @@ class App extends React.Component {
     this.state = {
       isLogin: true,
       userData: {
-        userId: "gamecrawler",
+        //userId: "gamecrawler",
         pw: "gameCrawler01",
         nickname: "Crawlers",
         email: "theCrawlers03@gmail.com",
@@ -55,7 +55,13 @@ class App extends React.Component {
     return (
       <BrowserRouter>
       <div className="App">
-      <Header isLogin={this.state.isLogin} userinfo={this.state.userinfo} logoutHandler={this.logoutHandler}/>
+      <Header 
+        isLogin={this.state.isLogin} 
+        userinfo={this.state.userinfo} 
+        loginHandler={this.loginHandler}
+        setUserInfo={this.setUserInfo}
+        logoutHandler={this.logoutHandler}
+      />
       
       {isLogin ? (
         <Switch>
