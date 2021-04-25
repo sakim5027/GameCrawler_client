@@ -46,6 +46,7 @@ export default function CurrentGame({ gameKey }) {
             <br />
             <hr />
             <br />
+            <h2>Reviews</h2>
             <div>
                 { review.map((el)=>{
                     <li>
