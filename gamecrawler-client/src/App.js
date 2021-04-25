@@ -13,6 +13,7 @@ import NewReview from './pages/newReview'
 import Home from './pages/Home/home';
 import Like from './pages/like';
 import ModifyUserInfo from './pages/modifyUserInfo'
+import CurrentGame from'./pages/CurrentGame'
 
 
 class App extends React.Component {
@@ -21,7 +22,7 @@ class App extends React.Component {
     this.state = {
       isLogin: true,
       userData: {
-        userId: "gamecrawler",
+        //userId: "gamecrawler",
         pw: "gameCrawler01",
         nickname: "Crawlers",
         email: "theCrawlers03@gmail.com",
@@ -55,7 +56,13 @@ class App extends React.Component {
     return (
       <BrowserRouter>
       <div className="App">
-      <Header isLogin={this.state.isLogin} userinfo={this.state.userinfo} logoutHandler={this.logoutHandler}/>
+      <Header 
+        isLogin={this.state.isLogin} 
+        userinfo={this.state.userinfo} 
+        loginHandler={this.loginHandler}
+        setUserInfo={this.setUserInfo}
+        logoutHandler={this.logoutHandler}
+      />
       
       {isLogin ? (
         <Switch>
@@ -63,15 +70,10 @@ class App extends React.Component {
           <Route exact path="/"><Redirect to="/home"/></Route>
           <Route path="/mypage"><Mypage userData={this.state.userData}/></Route>
           <Route path="/modify"><ModifyUserInfo userData={this.state.userData}/></Route>
-<<<<<<< HEAD
           <Route path="/reviews"><Reviews/></Route>
           <Route path="/writeReviews"><NewReview/></Route>
-          <Route path="/home"><HomeGameSearch/></Route>
-=======
-          <Route path="/reviews"><NewReview/></Route>
           <Route path="/home"><Home/></Route>
->>>>>>> 2b6e11af98104ad0d423dbe5b9545491d67d8d33
-  
+          <Route path="/currentGame"><CurrentGame/></Route>
         </Switch>
         ) : (
         <Switch>
@@ -81,7 +83,7 @@ class App extends React.Component {
           <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
           <Route path="/signup" component={Signup}></Route>
           <Route path="/home"><Home/></Route>
-
+          <Route path="/currentGame"><CurrentGame/></Route>
         </Switch>
         )}
       

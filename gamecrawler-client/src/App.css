@@ -240,7 +240,7 @@ input[type='password'] {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 70vh;
+  width: 42%;
   background-color: var(--background-color-down);
   border-radius: 10px;
   padding: 28px;
@@ -440,6 +440,10 @@ select {
   padding: 28px;
   opacity: 0.8; 
   font-weight: 900;
+}
+.welcome {
+  font-size:27px;
+  font-weight: bold;
 }
 
 

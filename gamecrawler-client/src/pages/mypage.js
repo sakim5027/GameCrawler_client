@@ -19,7 +19,7 @@ function Mypage(props) {
         <br />
         <br />
         <br />
-        <div>
+        <div className='welcome'>
           안녕하세요, <span className='name'>{props.userData.nickname}</span>님!
         </div>
 
