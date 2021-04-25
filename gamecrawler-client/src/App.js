@@ -13,6 +13,7 @@ import NewReview from './pages/newReview'
 import Home from './pages/Home/home';
 import Like from './pages/like';
 import ModifyUserInfo from './pages/modifyUserInfo'
+import CurrentGame from'./pages/CurrentGame'
 
 
 class App extends React.Component {
@@ -72,7 +73,7 @@ class App extends React.Component {
           <Route path="/reviews"><Reviews/></Route>
           <Route path="/writeReviews"><NewReview/></Route>
           <Route path="/home"><Home/></Route>
-  
+          <Route path="/currentGame"><CurrentGame/></Route>
         </Switch>
         ) : (
         <Switch>
@@ -82,7 +83,7 @@ class App extends React.Component {
           <Route path="/findIdAndPwd" component={FindIdAndPwd}></Route>
           <Route path="/signup" component={Signup}></Route>
           <Route path="/home"><Home/></Route>
-
+          <Route path="/currentGame"><CurrentGame/></Route>
         </Switch>
         )}
       
