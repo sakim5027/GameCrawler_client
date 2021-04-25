@@ -56,7 +56,7 @@ export default function CurrentGame({ gameKey }) {
                     } 
                 )}
             </div>
-            
+            <Link to='/writeReviews'><input type='button' className = "submitBtn" value='리뷰 남기기' /></Link>
         </>
         );
     };
