@@ -10,11 +10,11 @@ class Home extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            gameGenres: null,
-            games: null,
-            filteredGames: null,
-            currentGame: null,
-            currentkey: null
+            gameGenres: "",
+            games: "",
+            filteredGames: "",
+            currentGame: "",
+            currentkey: ""
         }
         this.gameGenreHandler=this.gameGenreHandler.bind(this);
         this.gameListHandler=this.gameListHandler.bind(this);
@@ -56,49 +56,53 @@ class Home extends React.Component{
     }
 
     render(){
-        const {gameGenre, games, filteredGames} = this.state;
-        //const genreOption= gameGenre.map(el =>{return <option value={el.genre_name}>{el.genre_name}</option>});
+        const {gameGenres, games, filteredGames} = this.state;
+        const genreOption= gameGenres.map((el) =>{
+            return <option value={el.genre_name}>{el.genre_name}</option>
+        });
         
        return ( 
-           <div>Hello World</div>
-            // <div className= "gameSearch">  
-            //     <NewGames/>
-            //     <div className="gameFilter">
-            //         <br/>
-            //         <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
-            //             <option value="">All</option>
-            //             {/* {genreOption} */}
-            //         </select>
-            //         <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/>
-            //         {/* <input type="text" placeholder="Search"/>
-            //         <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
-                    
-            //     </div>
-            //     <div className="currentGame">
-            //         <CurrentGame gameKey={this.state.currentKey}/>
-            //     </div>
-            //     <div className="filteredGames">
-            //     {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
-            //     {games.filter(el =>{ 
-            //         if(filteredGames===""){
-            //             return el   
-            //         }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
-            //             return el
-            //         }
-            //         }).map((el) =>{
-            //             return (
-            //                 <div className= "games">
-            //                     <p key={el.game_id} value={el.game_name}onClick={this.handleCardClick}>
-            //                         <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
-            //                         <Like />
-                                    
-            //                     </p>       
-            //                 </div>
-            //             )
-            //         })
-            //     }
-            //     </div>
-            // </div>
+           <div>
+               <div>Hello World</div>
+                <div className= "gameSearch">  
+                    <NewGames/>
+                    <div className="gameFilter">
+                        <br/>
+                        <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
+                            <option value="">All</option>
+                            {genreOption}
+                        </select>
+                        <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/>
+                        {/* <input type="text" placeholder="Search"/>
+                        <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
+                        
+                    </div>
+                    <div className="currentGame">
+                        <CurrentGame gameKey={this.state.currentKey}/>
+                    </div>
+                    <div className="filteredGames">
+                    {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
+                    {games.filter(el =>{ 
+                        if(filteredGames===""){
+                            return el   
+                        }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
+                            return el
+                        }
+                        }).map((el) =>{
+                            return (
+                                <div className= "games">
+                                    <p key={el.game_id} value={el.game_name}onClick={this.handleCardClick}>
+                                        <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
+                                        <Like />
+                                        
+                                    </p>       
+                                </div>
+                            )
+                        })
+                    }
+                    </div>
+                </div>
+           </div>
         )
     }
 }
