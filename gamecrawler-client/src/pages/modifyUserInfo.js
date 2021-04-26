@@ -69,7 +69,7 @@ class ModifyUserInfo extends React.Component{
         const {nickname, pw, email, genre} = this.state;
 
         axios
-        .put('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/edit',
+        .put('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/edit',
             {
                 pw: this.state.pw,
                 nickname: this.state.nickname,

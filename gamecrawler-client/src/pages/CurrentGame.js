@@ -6,7 +6,7 @@ import ReviewList from './reviewList'
 export default function CurrentGame({ gameKey }) {
 
     const { id } = {gameKey}
-    const gameUrl = 'http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/game'
+    const gameUrl = 'http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/game'
     const [currentGame, setGame] = useState(null);
 
     useEffect(()=>{
@@ -16,7 +16,7 @@ export default function CurrentGame({ gameKey }) {
             })
     }, [gameUrl])
 
-    const reviewUrl = 'http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/reviews'
+    const reviewUrl = 'http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/reviews'
     const [review, setReview] = useState(null);
 
     useEffect(()=>{

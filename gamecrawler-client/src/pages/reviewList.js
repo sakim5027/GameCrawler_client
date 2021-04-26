@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function ReviewList(){
 
-    const url = 'http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/reviews'
+    const url = 'http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/reviews'
     const [review, setReview] = useState(null);
 
     useEffect(()=>{

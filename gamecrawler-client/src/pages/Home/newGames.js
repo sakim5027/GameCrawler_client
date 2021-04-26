@@ -13,7 +13,7 @@ class NewGames extends React.Component{
     }
     newGameHandler(){
         axios
-            .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/games?flag=new',   
+            .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/games?flag=new',   
                 {withCredentials:true}
             ).then(res =>{
                 console.log(res.data)
