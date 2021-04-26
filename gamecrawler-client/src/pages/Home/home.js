@@ -10,36 +10,53 @@ class Home extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            gameGenres: "",
-            games: "",
-            filteredGames: "",
-            currentGame: "",
-            currentkey: ""
+            genre_id: null,
+            genre_name:['adventure', 'music,','Adventure','Action','Arcade'],
+            filteredGames: null,
+
+            currentGame: null,
+            currentkey: null,
+            games: [],
+            // game_id : null,
+            // game_name: '',
+            // game_image: null,
+            // genre: '',
+            // interest_yn : null
         }
-        this.gameGenreHandler=this.gameGenreHandler.bind(this);
+        // this.gameGenreHandler=this.gameGenreHandler.bind(this);
         this.gameListHandler=this.gameListHandler.bind(this);
-        this.filteredGameHandler=this.filteredGameHandler.bind(this);
+        // this.filteredGameHandler=this.filteredGameHandler.bind(this);
+        // this.handleCardClick=this.handleCardClick.bind(this);
 
     }
-    gameGenreHandler(){
-        axios
-            .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/genres',   
-                {withCredentials:true}
-            ).then(res =>{                  //{ "data" : [{"genre_id":"genre's id", "genre_name":"genre's name"}]}
-                console.log(res.data)
-                this.setState({
-                    gameGenres: res.data
-                })
-            })
+    componentDidMount(){
+        // this.gameGenreHandler();
+        this.gameListHandler();
     }
+
+    // gameGenreHandler(){
+    //     axios
+    //         .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/genres',   
+    //             {withCredentials:true}
+    //         ).then(res =>{                  //{ "data" : [{"genre_id":"genre's id", "genre_name":"genre's name"}]}
+    //             console.log(res.data)
+    //             const {genre_id, genre_name} = res.data
+    //             this.setState({
+    //                 genre_id,
+    //                 genre_name
+    //             })
+    //         })
+    //     }
     gameListHandler(){
         axios
-            .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/games',   
+            .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/games?flag=new',   
                 {withCredentials:true}
             ).then(res =>{
-                console.log(res.data)
+                console.log(res.data.data)
+                const {game_id, game_name, game_img, genre, interest_yn} = res.data.data;
                 this.setState({
-                    games: res.data
+                    games : res.data.data
+                    
                 })
             })
     }
@@ -49,58 +66,45 @@ class Home extends React.Component{
         })
     }
 
-    //슬안:CurrentGame 을 설정하기 위한 기능
-    handleCardClick(e) {
-        this.setState({ currentGame: e.target.value });
-        this.setState({ currentkey: e.target.key });
-    }
+    // //슬안:CurrentGame 을 설정하기 위한 기능
+    // handleCardClick(e) {
+    //     this.setState({ currentGame: e.target.value });
+    //     this.setState({ currentkey: e.target.key });
+    // }
 
     render(){
-        const {gameGenres, games, filteredGames} = this.state;
-        const genreOption= gameGenres.map((el) =>{
-            return <option value={el.genre_name}>{el.genre_name}</option>
-        });
-        
+        const {games, genre_name, filteredGames} = this.state;
+
+         const genreOption= genre_name.map(el =>{return <option value={el}>{el}</option>});
        return ( 
-           <div>
-               <div>Hello World</div>
-                <div className= "gameSearch">  
-                    <NewGames/>
-                    <div className="gameFilter">
-                        <br/>
-                        <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
-                            <option value="">All</option>
-                            {genreOption}
-                        </select>
-                        <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/>
-                        {/* <input type="text" placeholder="Search"/>
-                        <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
-                        
-                    </div>
-                    <div className="currentGame">
-                        <CurrentGame gameKey={this.state.currentKey}/>
-                    </div>
-                    <div className="filteredGames">
-                    {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
-                    {games.filter(el =>{ 
-                        if(filteredGames===""){
-                            return el   
-                        }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
-                            return el
-                        }
-                        }).map((el) =>{
-                            return (
-                                <div className= "games">
-                                    <p key={el.game_id} value={el.game_name}onClick={this.handleCardClick}>
-                                        <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
-                                        <Like />
-                                        
-                                    </p>       
-                                </div>
-                            )
-                        })
-                    }
-                    </div>
+            <div className= "gameSearch">  
+
+                {/* {/* <NewGames/> */}
+              
+                <div className="gameFilter">
+                    <br/>
+                    <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
+                        <option value="">All</option>
+                        {genreOption}
+                    </select>
+                    <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/> 
+                    {/* <input type="text" placeholder="Search"/>
+                    <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
+                    
+                </div>
+                {/* <div className="currentGame">
+                    <CurrentGame gameKey={this.state.currentKey}/>
+                </div> */}
+                <div className="filteredGames">
+                {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
+
+                {games.filter(el =>{ 
+                    if(filteredGames===""){
+                        return el   
+                    }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
+                        return el
+                    }})}
+                    
                 </div>
            </div>
         )
