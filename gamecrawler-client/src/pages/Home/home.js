@@ -10,46 +10,42 @@ class Home extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            genre_id: null,
-            genre_name:['adventure', 'music,','Adventure','Action','Arcade'],
+            // genre_name:['adventure', 'music,','Adventure','Action','Arcade'],
+            genre_name: [],
             filteredGames: '',
 
             currentGame: null,
             currentkey: null,
             games: [],
-            // game_id : null,
-            // game_name: '',
-            // game_image: null,
-            // genre: '',
-            // interest_yn : null
         }
-        // this.gameGenreHandler=this.gameGenreHandler.bind(this);
+        this.gameGenreHandler=this.gameGenreHandler.bind(this);
         this.gameListHandler=this.gameListHandler.bind(this);
         this.filteredGameHandler=this.filteredGameHandler.bind(this);
         // this.handleCardClick=this.handleCardClick.bind(this);
 
     }
     componentDidMount(){
-        // this.gameGenreHandler();
+        this.gameGenreHandler();
         this.gameListHandler();
     }
 
-    // gameGenreHandler(){
-    //     axios
-    //         .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/genres',   
-    //             {withCredentials:true}
-    //         ).then(res =>{                  //{ "data" : [{"genre_id":"genre's id", "genre_name":"genre's name"}]}
-    //             console.log(res.data)
-    //             const {genre_id, genre_name} = res.data
-    //             this.setState({
-    //                 genre_id,
-    //                 genre_name
-    //             })
-    //         })
-    //     }
+    gameGenreHandler(){
+        axios
+            .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/genres',   
+                {withCredentials:true}
+            ).then(res =>{                  //{ "data" : [{"genre_id":"genre's id", "genre_name":"genre's name"}]}
+                console.log(res.data.data)  //콘솔에 찍어보니 genreList: [] 이라고 나옴
+                console.log(res.data.data.genreList)    // 아마 배열에 장르리스트가 담기는 듯(아이디없이)
+                const {genre_id, genre_name} = res.data.data    
+                this.setState({
+                    genre_name:res.data.data.genreList
+                })
+                console.log(this.state.genre_name)
+            })
+        }
     gameListHandler(){
         axios
-            .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/games?flag=new',   
+            .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/games?flag=new',   
                 {withCredentials:true}
             ).then(res =>{
                 console.log(res.data.data)
@@ -77,17 +73,18 @@ class Home extends React.Component{
     render(){
         const {games, genre_name, filteredGames} = this.state;
 
-         const genreOption= genre_name.map(el =>{return <option value={el}>{el}</option>});
+        //  const genreOption= genre_name.map(el =>{return <option value={el}>{el}</option>});
        return ( 
             <div className= "gameSearch">  
 
                 {/* {/* <NewGames/> */}
-              
+                {this.state.games}
+                {this.state.genre}
                 <div className="gameFilter">
                     <br/>
                     <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
                         <option value="">All</option>
-                        {genreOption}
+                        {/* {genreOption} */}
                     </select>
                     <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/> 
                     {/* <input type="text" placeholder="Search"/>

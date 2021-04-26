@@ -90,13 +90,13 @@ a{
   width:100%;
   bottom: 0;
   display: flex;
-  justify-content: start;
-  align-items: center;
-  padding-left: 20px;
+  flex-direction: column;
+  
+  padding: 5px 20px;
+  font-size: 12px;
 }
 .teamName{
-  font-size: 15x;
-  padding-right: 60px;
+  font-weight:800;
 }
 
 

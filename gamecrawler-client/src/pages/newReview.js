@@ -36,7 +36,7 @@ class NewReview extends React.Component {
         // }
 
         return (
-            <form className="newReviewForm" action="http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/review" method="post" onSubmit={this.submitHandler}>
+            <form className="newReviewForm" action="http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/review" method="post" onSubmit={this.submitHandler}>
                 <div className = "newReview">
                     <h2>새 리뷰 쓰기</h2>  
                    <div className = "newReviewContainer">
