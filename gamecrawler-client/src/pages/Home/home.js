@@ -19,8 +19,14 @@ class Home extends React.Component{
         this.gameGenreHandler=this.gameGenreHandler.bind(this);
         this.gameListHandler=this.gameListHandler.bind(this);
         this.filteredGameHandler=this.filteredGameHandler.bind(this);
+        this.handleCardClick=this.handleCardClick.bind(this);
 
     }
+    componentDidMount(){
+        this.gameGenreHandler();
+        this.gameListHandler();
+    }
+
     gameGenreHandler(){
         axios
             .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/genres',   
@@ -57,48 +63,47 @@ class Home extends React.Component{
 
     render(){
         const {gameGenre, games, filteredGames} = this.state;
-        //const genreOption= gameGenre.map(el =>{return <option value={el.genre_name}>{el.genre_name}</option>});
-        
+        const genreOption= gameGenre.map(el =>{return <option value={el.genre_name}>{el.genre_name}</option>});
+        //gameGenre= res.data = [ {genre_id :1, genre_name: "adventure"}, {genre_id :2, genre_name: "roll-playing"},]
        return ( 
-           <div>Hello World</div>
-            // <div className= "gameSearch">  
-            //     <NewGames/>
-            //     <div className="gameFilter">
-            //         <br/>
-            //         <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
-            //             <option value="">All</option>
-            //             {/* {genreOption} */}
-            //         </select>
-            //         <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/>
-            //         {/* <input type="text" placeholder="Search"/>
-            //         <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
+            <div className= "gameSearch">  
+                <NewGames/>
+                <div className="gameFilter">
+                    <br/>
+                    <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
+                        <option value="">All</option>
+                        {genreOption}
+                    </select>
+                    <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/>
+                    {/* <input type="text" placeholder="Search"/>
+                    <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
                     
-            //     </div>
-            //     <div className="currentGame">
-            //         <CurrentGame gameKey={this.state.currentKey}/>
-            //     </div>
-            //     <div className="filteredGames">
-            //     {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
-            //     {games.filter(el =>{ 
-            //         if(filteredGames===""){
-            //             return el   
-            //         }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
-            //             return el
-            //         }
-            //         }).map((el) =>{
-            //             return (
-            //                 <div className= "games">
-            //                     <p key={el.game_id} value={el.game_name}onClick={this.handleCardClick}>
-            //                         <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
-            //                         <Like />
+                </div>
+                <div className="currentGame">
+                    <CurrentGame gameKey={this.state.currentKey}/>
+                </div>
+                <div className="filteredGames">
+                {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
+                {games.filter(el =>{ 
+                    if(filteredGames===""){
+                        return el   
+                    }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
+                        return el
+                    }
+                    }).map((el) =>{
+                        return (
+                            <div className= "games">
+                                <p key={el.game_id} value={el.game_name}onClick={this.handleCardClick}>
+                                    <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
+                                    <Like />
                                     
-            //                     </p>       
-            //                 </div>
-            //             )
-            //         })
-            //     }
-            //     </div>
-            // </div>
+                                </p>       
+                            </div>
+                        )
+                    })
+                }
+                </div>
+            </div>
         )
     }
 }
