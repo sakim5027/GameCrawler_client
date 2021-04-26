@@ -103,7 +103,19 @@ class Home extends React.Component{
                         return el   
                     }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
                         return el
-                    }})}
+                    }
+                    }).map((el) =>{
+                        return (
+                            <div className= "games">
+                                <p key={el.game_id} value={el.game_name}onClick={this.handleCardClick}>
+                                    <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
+                                    <Like />
+                                    
+                                </p>       
+                            </div>
+                        )
+                    })
+                }
                     
                 </div>
            </div>
