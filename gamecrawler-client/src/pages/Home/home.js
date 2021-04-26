@@ -12,7 +12,7 @@ class Home extends React.Component{
         this.state={
             genre_id: null,
             genre_name:['adventure', 'music,','Adventure','Action','Arcade'],
-            filteredGames: null,
+            filteredGames: [],
 
             currentGame: null,
             currentkey: null,
@@ -25,7 +25,7 @@ class Home extends React.Component{
         }
         // this.gameGenreHandler=this.gameGenreHandler.bind(this);
         this.gameListHandler=this.gameListHandler.bind(this);
-        // this.filteredGameHandler=this.filteredGameHandler.bind(this);
+        this.filteredGameHandler=this.filteredGameHandler.bind(this);
         // this.handleCardClick=this.handleCardClick.bind(this);
 
     }
@@ -58,6 +58,7 @@ class Home extends React.Component{
                     games : res.data.data
                     
                 })
+                console.log(this.state.games);
             })
     }
     filteredGameHandler(e){
@@ -98,7 +99,7 @@ class Home extends React.Component{
                 <div className="filteredGames">
                 {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
 
-                {games.filter(el =>{ 
+                {/* {games.filter(el =>{ 
                     if(filteredGames===""){
                         return el   
                     }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
@@ -115,7 +116,20 @@ class Home extends React.Component{
                             </div>
                         )
                     })
-                }
+                } */}
+                {games};
+
+                {games.map((el)=>{
+                    return(
+                        <div className='games'>
+                            <p key={el.game_id} value={el.game_name}>
+                                <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
+                                <Like />
+                                
+                            </p>       
+                        </div>
+                    )
+                })}
                     
                 </div>
            </div>
