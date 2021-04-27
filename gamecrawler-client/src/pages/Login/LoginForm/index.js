@@ -22,8 +22,8 @@ export class LoginForm extends React.Component{
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  loginRequestHandler() {
-    axios
+  loginRequestHandler = async() =>{
+    await axios
       .post(
         'http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/login',
         {
