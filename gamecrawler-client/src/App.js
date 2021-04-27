@@ -15,6 +15,7 @@ import Like from './pages/like';
 import ModifyUserInfo from './pages/modifyUserInfo'
 import CurrentGame from'./pages/CurrentGame'
 import Top5Games from './pages/Home/top5Gmaes';
+import Test from '../src/pages/Home/test'
 
 
 class App extends React.Component {
@@ -73,7 +74,7 @@ class App extends React.Component {
           <Route path="/modify"><ModifyUserInfo userData={this.state.userData}/></Route>
           <Route path="/reviews"><Reviews/></Route>
           <Route path="/writeReviews"><NewReview/></Route>
-          <Route path="/home"><Home/></Route>
+          <Route path="/home"><Test/></Route>
           <Route path="/currentGame"><CurrentGame/></Route>
           <Route path="/statistics"><Top5Games/></Route>
         </Switch>

@@ -11,7 +11,7 @@ function Top5Games(){
         ).then(res => {
             console.log(res.data.data);
             const {game_id, game_image} = res.data.data
-            setTop5(game_id, game_image); // 이렇게 하면 될까?
+            setTop5(res.data.data); // 이렇게 하면 될까?
             console.log(top5)
         }).catch(err => alert(err))
     }, [])
@@ -19,7 +19,7 @@ function Top5Games(){
         <div>
             <ul>
                 {
-                    top5.map(el => <li key={el.game_id}>{top5.game_name}</li>)     //나중에 gmae image로 변경하기
+                    top5.map(el => <li key={el.game_id}>{el.game_image}</li>)     //나중에 gmae image로 변경하기
                 }
             </ul>
         </div>
