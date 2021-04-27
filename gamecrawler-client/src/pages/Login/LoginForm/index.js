@@ -22,10 +22,10 @@ export class LoginForm extends React.Component{
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  loginRequestHandler() {
-    axios
+  loginRequestHandler = async() =>{
+    await axios
       .post(
-        'http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/login',
+        'http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/login',
         {
           user_id: this.state.id,
           password: this.state.password,
@@ -34,7 +34,7 @@ export class LoginForm extends React.Component{
       )
       .then((res) => {
         this.props.loginHandler(true);
-        return axios.get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/info', {
+        return axios.get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/info', {
           withCredentials: true,
         });
       })

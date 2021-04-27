@@ -6,24 +6,23 @@ class NewGames extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            newGames: null,
-            test: '최신 게임 나와라 얍'
+            newGames: []
         }
         this.newGameHandler = this.newGameHandler.bind(this);
     }
     newGameHandler(){
         axios
-            .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/games?flag=new',   
+            .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/games?flag=new',   
                 {withCredentials:true}
             ).then(res =>{
-                console.log(res.data)
+                console.log(res.data.data)
                 this.setState({
-                    newGames: res.data
+                    newGames: res.data.data
                 })
             })
     }
     render(){
-        const {newGames, test} = this.state;
+        const {newGames} = this.state;
         return (
             <div>
                 <p>{test}</p>

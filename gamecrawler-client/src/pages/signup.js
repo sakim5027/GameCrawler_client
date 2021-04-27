@@ -55,7 +55,7 @@ export class Signup extends React.Component {
             email: ""
         });
         } else {
-        fetch("http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/check-login-id", id_info)
+        fetch("http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/check-login-id", id_info)
             .then(res => res.json())
             .then(json => {
             if (json === true) {
@@ -150,7 +150,7 @@ export class Signup extends React.Component {
             pw === re_pw &&
             pwCheck === "비밀번호가 일치합니다."
         ) {
-        fetch("http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/signup", signup_info)
+        fetch("http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/signup", signup_info)
             .then(alert("가입이 완료되었습니다."))
             .then(this.props.history.push("/login"));
         } else {

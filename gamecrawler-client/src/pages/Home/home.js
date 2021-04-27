@@ -5,62 +5,56 @@ import NewGames from './newGames'
 import Like from '../like'
 import axios from 'axios';
 import CurrentGame from'../CurrentGame'
+import { Link } from 'react-router-dom'
 
 class Home extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            genre_id: null,
-            genre_name:['adventure', 'music,','Adventure','Action','Arcade'],
-            filteredGames: [],
-
-            currentGame: null,
-            currentkey: null,
+            genre_list: [],
+            filteredGames: '',
+            currentGame: "",
+            currentId: '',
             games: [],
-            // game_id : null,
-            // game_name: '',
-            // game_image: null,
-            // genre: '',
-            // interest_yn : null
         }
-        // this.gameGenreHandler=this.gameGenreHandler.bind(this);
+        this.gameGenreHandler=this.gameGenreHandler.bind(this);
         this.gameListHandler=this.gameListHandler.bind(this);
         this.filteredGameHandler=this.filteredGameHandler.bind(this);
-        // this.handleCardClick=this.handleCardClick.bind(this);
+        this.handleCardClick=this.handleCardClick.bind(this);
 
     }
     componentDidMount(){
-        // this.gameGenreHandler();
+        this.gameGenreHandler();
         this.gameListHandler();
     }
 
-    // gameGenreHandler(){
-    //     axios
-    //         .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/genres',   
-    //             {withCredentials:true}
-    //         ).then(res =>{                  //{ "data" : [{"genre_id":"genre's id", "genre_name":"genre's name"}]}
-    //             console.log(res.data)
-    //             const {genre_id, genre_name} = res.data
-    //             this.setState({
-    //                 genre_id,
-    //                 genre_name
-    //             })
-    //         })
-    //     }
-    gameListHandler(){
-        axios
-            .get('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/games?flag=new',   
+    gameGenreHandler = async()=>{
+        await axios 
+            .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/genres',
+            {withCredentials:true})
+            .then(res => {
+                //console.log(res.data.data.genreList); //undefined
+                return res.data.data.genreList
+            }).then(res =>{
+                this.setState({
+                    genre_list: res.map(el => {return el.genre_name})
+                })
+            })
+        }
+
+    gameListHandler= async()=>{
+        await axios
+            .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/games',   
                 {withCredentials:true}
             ).then(res =>{
                 console.log(res.data.data)
-                const {game_id, game_name, game_img, genre, interest_yn} = res.data.data;
                 this.setState({
-                    games : res.data.data
-                    
+                    games : res.data.data   
                 })
-                console.log(this.state.games);
+                //console.log(this.state.games)
             })
     }
+
     filteredGameHandler(e){
         this.setState({
             filteredGames: e.target.value
@@ -68,20 +62,29 @@ class Home extends React.Component{
     }
 
     // //슬안:CurrentGame 을 설정하기 위한 기능
-    // handleCardClick(e) {
-    //     this.setState({ currentGame: e.target.value });
-    //     this.setState({ currentkey: e.target.key });
-    // }
+    handleCardClick(e) {
+        e.persist();
+        console.log(e.currentTarget.getAttribute("value"))
+        console.log(e.currentTarget.getAttribute("id"))
+
+        const curGameValue = e.currentTarget.getAttribute("value");
+        const curGameId = e.currentTarget.getAttribute("id").toString();
+
+        this.setState({ 
+            currentGame: curGameValue
+        });
+        this.setState({ 
+            currentId: curGameId
+        });
+        
+    }
 
     render(){
-        const {games, genre_name, filteredGames} = this.state;
+        const {games, genre_list, filteredGames} = this.state;
 
-         const genreOption= genre_name.map(el =>{return <option value={el}>{el}</option>});
+        const genreOption= genre_list.map(el =>{return <option value={el}>{el}</option>});
        return ( 
             <div className= "gameSearch">  
-
-                {/* {/* <NewGames/> */}
-              
                 <div className="gameFilter">
                     <br/>
                     <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
@@ -93,11 +96,32 @@ class Home extends React.Component{
                     <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
                     
                 </div>
-                {/* <div className="currentGame">
-                    <CurrentGame gameKey={this.state.currentKey}/>
-                </div> */}
+                <div className="CurrentGame">
+                    <CurrentGame currentId={this.state.currentId} currentGame = {this.state.currentGame}/>
+                    {console.log(this.state.currentGame)}
+                    {console.log(this.state.currentId)}
+                </div>
                 <div className="filteredGames">
-                {/* 나중엔 fakeData가 아니라 game으로 수정해야 함 */}
+                    {games.filter(el =>{ 
+                    if(filteredGames===""){
+                        return el   
+                    }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
+                        return el
+                    }
+                    }).map((el) =>{
+                        return (
+                            <div className= "games" >
+                                <p >
+                                <Link to='/currentGame'><img src={el.game_image} id={el.game_id} value={el.game_name} onClick={this.handleCardClick} alt="game" width="150px" height="200px" ></img></Link>
+                                    <Like />
+                                    
+                                </p>       
+                            </div>
+                        )
+                    })
+                }
+
+
 
                 {/* {games.filter(el =>{ 
                     if(filteredGames===""){
@@ -105,7 +129,8 @@ class Home extends React.Component{
                     }else if((el.game_name.toLowerCase().includes(filteredGames.toLocaleLowerCase()))||(el.genre.toLowerCase().includes(filteredGames.toLocaleLowerCase()))){
                         return el
                     }
-                    }).map((el) =>{
+                    })
+                    .map((el) =>{
                         return (
                             <div className= "games">
                                 <p key={el.game_id} value={el.game_name}onClick={this.handleCardClick}>
@@ -117,20 +142,7 @@ class Home extends React.Component{
                         )
                     })
                 } */}
-                {games};
-
-                {games.map((el)=>{
-                    return(
-                        <div className='games'>
-                            <p key={el.game_id} value={el.game_name}>
-                                <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
-                                <Like />
-                                
-                            </p>       
-                        </div>
-                    )
-                })}
-                    
+                
                 </div>
            </div>
         )

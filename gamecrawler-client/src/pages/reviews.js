@@ -30,6 +30,9 @@ class Reviews extends React.Component{
                     <select className = "selectBox" name="genre" value={this.state.selectedGenre} onChange={this.handleGenreChange}>
                         { this.state.genreOptions.map((option) => <option>{option}</option>)}
                     </select>
+                    <span>
+                    <Link to='/writeReviews'><input type='button' className = "reviewBtn" value='리뷰 쓰기'/></Link>
+                    </span>
                 </div>
                 <ul>
                     <li><ReviewList/></li>

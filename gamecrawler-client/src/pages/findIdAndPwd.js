@@ -26,7 +26,7 @@ class FindIdAndPwd extends React.Component {
             this.setState({idMessage: "이메일을 입력해주세요."})
         }else{
             axios
-            .post('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/find-id', //env 에 서버 주소 적어놓고 갖다 쓰기
+            .post('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/find-id', //env 에 서버 주소 적어놓고 갖다 쓰기
                 {email: this.state.email},{withCredentials:true}
             )
             .then(res =>{
@@ -57,7 +57,7 @@ class FindIdAndPwd extends React.Component {
             this.setState({pwdMessage: "이메일과 아이디를 모두 입력해주세요."})
         }else{
             axios
-            .post('http://ec2-18-189-171-239.us-east-2.compute.amazonaws.com:5000/user/find-password',
+            .post('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/find-password',
                 {
                     email: this.state.emailForPwd,
                     user_id: this.state.userid
