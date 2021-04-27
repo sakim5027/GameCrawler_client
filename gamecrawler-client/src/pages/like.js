@@ -51,7 +51,8 @@ class Like extends React.Component{
             <div>
                 <button className = "likeBtn" onClick={this.likeHandler}>
                     {like? <FontAwesomeIcon icon={fasHeart}/> : <FontAwesomeIcon icon={faHeart}/> }
-                {this.state.likeCounter}</button>
+                {/* {this.state.likeCounter} */}
+                </button>
             </div>
         )
     }
