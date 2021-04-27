@@ -5,6 +5,7 @@ import NewGames from './newGames'
 import Like from '../like'
 import axios from 'axios';
 import CurrentGame from'../CurrentGame'
+import { Link } from 'react-router-dom'
 
 class Home extends React.Component{
     constructor(props){
@@ -12,8 +13,8 @@ class Home extends React.Component{
         this.state={
             genre_list: [],
             filteredGames: '',
-            currentGame: '',
-            currentkey: '',
+            currentGame: "",
+            currentId: '',
             games: [],
         }
         this.gameGenreHandler=this.gameGenreHandler.bind(this);
@@ -32,7 +33,7 @@ class Home extends React.Component{
             .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/genres',
             {withCredentials:true})
             .then(res => {
-                console.log(res.data.data.genreList); //undefined
+                //console.log(res.data.data.genreList); //undefined
                 return res.data.data.genreList
             }).then(res =>{
                 this.setState({
@@ -43,14 +44,14 @@ class Home extends React.Component{
 
     gameListHandler= async()=>{
         await axios
-            .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/games?flag=new',   
+            .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/games',   
                 {withCredentials:true}
             ).then(res =>{
                 console.log(res.data.data)
                 this.setState({
                     games : res.data.data   
                 })
-                console.log(this.state.games)
+                //console.log(this.state.games)
             })
     }
 
@@ -62,8 +63,20 @@ class Home extends React.Component{
 
     // //슬안:CurrentGame 을 설정하기 위한 기능
     handleCardClick(e) {
-        this.setState({ currentGame: e.target.value });
-        this.setState({ currentkey: e.target.key });
+        e.persist();
+        console.log(e.currentTarget.getAttribute("value"))
+        console.log(e.currentTarget.getAttribute("id"))
+
+        const curGameValue = e.currentTarget.getAttribute("value");
+        const curGameId = e.currentTarget.getAttribute("id").toString();
+
+        this.setState({ 
+            currentGame: curGameValue
+        });
+        this.setState({ 
+            currentId: curGameId
+        });
+        
     }
 
     render(){
@@ -72,8 +85,6 @@ class Home extends React.Component{
         const genreOption= genre_list.map(el =>{return <option value={el}>{el}</option>});
        return ( 
             <div className= "gameSearch">  
-                {console.log(this.state.genre_list)}
-                {console.log(this.state.games)}
                 <div className="gameFilter">
                     <br/>
                     <select className="genrePicker" name="genrePicker" onChange={this.filteredGameHandler} defaultValue="">
@@ -85,8 +96,10 @@ class Home extends React.Component{
                     <button className = "submitBtn" onClick={e=>{setFilteredEl(e.target.value)}}>조회</button> */}
                     
                 </div>
-                <div className="currentGame">
-                    <CurrentGame gameKey={this.state.currentKey}/>
+                <div className="CurrentGame">
+                    <CurrentGame currentId={this.state.currentId} currentGame = {this.state.currentGame}/>
+                    {console.log(this.state.currentGame)}
+                    {console.log(this.state.currentId)}
                 </div>
                 <div className="filteredGames">
                     {games.filter(el =>{ 
@@ -97,9 +110,9 @@ class Home extends React.Component{
                     }
                     }).map((el) =>{
                         return (
-                            <div className= "games">
-                                <p key={el.game_id.toString()} value={el.game_name} onClick={this.handleCardClick}>
-                                    <img src={el.game_image} alt="game" width="150px" height="200px" ></img>
+                            <div className= "games" >
+                                <p >
+                                <Link to='/currentGame'><img src={el.game_image} id={el.game_id} value={el.game_name} onClick={this.handleCardClick} alt="game" width="150px" height="200px" ></img></Link>
                                     <Like />
                                     
                                 </p>       
@@ -131,7 +144,7 @@ class Home extends React.Component{
                 } */}
                 
                 </div>
-            </div>
+           </div>
         )
     }
 }

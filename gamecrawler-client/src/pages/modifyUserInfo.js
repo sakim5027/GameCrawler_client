@@ -65,10 +65,10 @@ class ModifyUserInfo extends React.Component{
     }
 
     //수정된 회원정보 저장
-    modifyInfoHandler(){
+    modifyInfoHandler = async() =>{
         const {nickname, pw, email, genre} = this.state;
 
-        axios
+        await axios
         .put('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/edit',
             {
                 pw: this.state.pw,
@@ -78,6 +78,19 @@ class ModifyUserInfo extends React.Component{
 
             },{withCredentials:true}
         )
+        .then((res)=>{
+            return axios.get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/info', 
+            {withCredentials: true})
+        })
+        .then((res) => {
+            let { password, nickname, email, genre } = res.data.data;
+            this.props.setUserInfo({
+            password,
+            nickname,
+            email,
+            genre
+            });
+        })
         .then(alert("가입이 완료되었습니다."))
         .then(this.props.history.push("/myPage"))
         .catch(err => {
