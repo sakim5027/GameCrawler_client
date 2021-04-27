@@ -71,9 +71,7 @@ class Home extends React.Component{
         const curGameId = e.currentTarget.getAttribute("id").toString();
 
         this.setState({ 
-            currentGame: curGameValue
-        });
-        this.setState({ 
+            currentGame: curGameValue,
             currentId: curGameId
         });
         
@@ -98,8 +96,6 @@ class Home extends React.Component{
                 </div>
                 <div className="CurrentGame">
                     <CurrentGame currentId={this.state.currentId} currentGame = {this.state.currentGame}/>
-                    {console.log(this.state.currentGame)}
-                    {console.log(this.state.currentId)}
                 </div>
                 <div className="filteredGames">
                     {games.filter(el =>{ 

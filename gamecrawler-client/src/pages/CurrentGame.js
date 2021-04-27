@@ -22,14 +22,14 @@ class CurrentGame extends React.Component{
 
     currentGameInfoHandler = async()=>{
         await axios
-        .get(`http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/game`,
-        {game_id: this.props.currentId},{withCredentials:true})
-        .then(res => {
-            console.log('curGameData:', res.data.data);
-            this.setState({
-                curGameInfo: res.data.data
+            .get(`http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/game`,
+            {game_id: this.props.currentId},{withCredentials:true})
+            .then(res => {
+                console.log('curGameData:', res.data.data);
+                this.setState({
+                    curGameInfo: res.data.data
+                })
             })
-        })
     }
 
     currentGameReviewHandlier = async() =>{
@@ -60,10 +60,13 @@ class CurrentGame extends React.Component{
                         <div className='mypageContainer'>
                             <h1 className="title">{el.game_name}</h1>
                             <img className="thumbnail" src={el.game_image} />
-                            <p className="rating">Age Rating : {el.age_ratings}</p>
-                            <p className="running-time">Genre : {el.genre}</p>
+                            <p >Age Rating : {el.age_ratings}</p>
+                            <p >Genre : {el.genre}</p>
+                            <p >First Release Date : {el.first_release_date}</p>
+                            <p >Platforms : {el.platforms_name}</p>
+                            <p >Involved Companies : {el.involved_companies_name}</p>
                             <p>Description</p>
-                            <p className="description">{el.description_full}</p>
+                            <p >{el.description_full}</p>
                             {console.log(curGameInfo)}
                         </div>
                     )}

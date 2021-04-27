@@ -232,6 +232,9 @@ input[type='password'] {
   line-height: 29px;
   align-items: center;
 }
+.reviewBtn:hover{
+  background-color: var(--accent-color);
+}
 .loginSubmitBtn{
   width: 100%;
   height: 30px;
