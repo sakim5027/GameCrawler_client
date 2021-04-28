@@ -1,5 +1,5 @@
 import React from 'react';
-import Review from './reviews'
+import Like from './like'
 
 class NewReview extends React.Component {
     constructor(props){
@@ -41,7 +41,11 @@ class NewReview extends React.Component {
                     <h2>새 리뷰 쓰기</h2>  
                    <div className = "newReviewContainer">
                         <div className = "">게임 정보</div>
-                        <div>game info component</div>
+                            <div className="gameForReview">
+                                {this.props.game_image}
+                                <Like/>
+                            </div>
+                    <div>game info component</div>
                     </div>
                     <div className = "newReviewRate">게임 평점
                         <br/>

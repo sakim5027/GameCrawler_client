@@ -15,7 +15,7 @@ import Like from './pages/like';
 import ModifyUserInfo from './pages/modifyUserInfo'
 import CurrentGame from'./pages/CurrentGame'
 import Top5Games from './pages/Home/top5Gmaes';
-import Test from '../src/pages/Home/test'
+
 
 
 class App extends React.Component {
@@ -48,7 +48,7 @@ class App extends React.Component {
 
   logoutHandler() {
     this.setState({
-      isLogin: true,
+      isLogin: false,
     });
   }
 
@@ -73,7 +73,7 @@ class App extends React.Component {
           <Route path="/mypage"><Mypage userData={this.state.userData}/></Route>
           <Route path="/modify"><ModifyUserInfo userData={this.state.userData}/></Route>
           <Route path="/reviews"><Reviews/></Route>
-          <Route path="/writeReviews"><NewReview/></Route>
+          <Route path="/newReviews"><NewReview/></Route>
           <Route path="/home"><Home/></Route>
           <Route path="/currentGame"><CurrentGame/></Route>
           <Route path="/statistics"><Top5Games/></Route>
