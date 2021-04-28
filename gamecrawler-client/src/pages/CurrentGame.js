@@ -1,7 +1,10 @@
 import React,{useEffect, useState} from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 import ReviewList from './reviewList'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+
+
 
 class CurrentGame extends React.Component{
     constructor(props){
@@ -13,7 +16,6 @@ class CurrentGame extends React.Component{
         this.currentGameInfoHandler = this.currentGameInfoHandler.bind(this);
         this.currentGameReviewHandlier = this.currentGameReviewHandlier.bind(this);
     }
-
 
     componentDidMount(){
         this.currentGameInfoHandler();
@@ -46,14 +48,16 @@ class CurrentGame extends React.Component{
 
     render(){
         const{curGameInfo, curGameReview}= this.state;
-
+    
+        console.log(this.props)
+        
         if (!curGameInfo) {
             return '게임을 선택하세요'
         }
         else{
-            //const { game_name, description_full, genre, age_ratings, game_image } = this.state.curGameInfo;
+            const { game_name, description_full, genre, age_ratings, game_image } = this.state.curGameInfo;
             return (
-            <>
+            <> 
                 <div>
                 {curGameInfo.map((el)=>{
                     return (
@@ -83,13 +87,27 @@ class CurrentGame extends React.Component{
                         } 
                     )}
                 </div>
-                <Link to='/writeReviews'><input type='button' className = "reviewBtn" value='리뷰 남기기' /></Link>
+                <Link to='/newReviews'><input type='button' className = "reviewBtn" value='리뷰 남기기' /></Link>
             </>
             );
         };
     }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default CurrentGame;
 // export default function CurrentGame({ gameKey, curGame }) {

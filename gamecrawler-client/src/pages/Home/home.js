@@ -13,7 +13,7 @@ class Home extends React.Component{
         this.state={
             genre_list: [],
             filteredGames: '',
-            currentGame: "",
+            currentGame: '',
             currentId: '',
             games: [],
         }
@@ -21,8 +21,9 @@ class Home extends React.Component{
         this.gameListHandler=this.gameListHandler.bind(this);
         this.filteredGameHandler=this.filteredGameHandler.bind(this);
         this.inputValueHandler=this.inputValueHandler.bind(this);
-
+        this.handleCardClick=this.handleCardClick.bind(this);
     }
+
     componentDidMount(){
         this.gameGenreHandler();
         this.gameListHandler();
@@ -60,6 +61,7 @@ class Home extends React.Component{
             filteredGames: e.target.value
         })
     }
+
     inputValueHandler(e){
         const inputValue = document.getElementById('searchInput').value;
         this.setState({
@@ -68,21 +70,15 @@ class Home extends React.Component{
     }
 
     // //슬안:CurrentGame 을 설정하기 위한 기능
-    handleCardClick(e) {
+    handleCardClick(event) {
         e.persist();
         console.log(e.currentTarget.getAttribute("value"))
         console.log(e.currentTarget.getAttribute("id"))
-
-        const curGameValue = e.currentTarget.getAttribute("value");
-        const curGameId = e.currentTarget.getAttribute("id").toString();
-
         this.setState({ 
-            currentGame: curGameValue
+            currentGame: e.currentTarget.getAttribute("value"),
+            currentId: e.currentTarget.getAttribute("id").toString()
         });
-        this.setState({ 
-            currentId: curGameId
-        });
-        
+
     }
 
     render(){
@@ -121,8 +117,11 @@ class Home extends React.Component{
                         return (    
                             <div className= "games" >
                                 <p >
-                                <Link to='/currentGame'><img src={el.game_image} id={el.game_id} value={el.game_name} onClick={this.handleCardClick} alt="game" width="150px" height="200px" ></img></Link>
-                                    <Like />
+                                <Link to='/currentGame' ><img src={el.game_image} id={el.game_id} value={el.game_name} onClick={this.handleCardClick} alt={el.game_name} width="150px" height="200px" ></img></Link>
+                                {/* <Link to={`/currentGame/${el.game_id}`}>
+                                     <img src={el.game_image} id={el.game_id} value={el.game_name} onClick={this.handleCardClick} alt={el.game_name} width="150px" height="200px" ></img>
+                                </Link> */}
+                                    <Like/>
                                     
                                 </p>       
                             </div>
