@@ -2,6 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, Route } from 'react-router-dom' 
+import GoogleLoginButton from './googleLogin'
 
 
 export class LoginForm extends React.Component{
@@ -70,6 +71,8 @@ export class LoginForm extends React.Component{
               onChange={(e) => this.inputHandler(e)}
               value={this.state.id}
             />
+            
+          
             <div className = "subTitle">Password</div>
             <input 
               name="password" 
@@ -80,14 +83,20 @@ export class LoginForm extends React.Component{
             /> 
             <div className="alert-box">{this.state.errorMessage}</div>
           </div>
+          
+          
           <div className="buttonField">
               <button className="loginSubmitBtn" onClick = {this.loginRequestHandler}>Login</button>
+              
               <Link to="/signup">
                 <button className="loginSubmitBtn" onClick = {this.props.closeModal}>회원가입</button>
               </Link>
+              
               <Link to="/findIdAndPwd">
                 <button className="loginSearchBtn" onClick = {this.props.closeModal}>아이디/비밀번호 찾기</button>
               </Link>
+              
+              <GoogleLoginButton/>
               
             </div>
         </div>
