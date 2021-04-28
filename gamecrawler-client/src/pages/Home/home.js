@@ -70,7 +70,7 @@ class Home extends React.Component{
     }
 
     // //슬안:CurrentGame 을 설정하기 위한 기능
-    handleCardClick(event) {
+    handleCardClick(e) {
         e.persist();
         console.log(e.currentTarget.getAttribute("value"))
         console.log(e.currentTarget.getAttribute("id"))
@@ -93,10 +93,10 @@ class Home extends React.Component{
                         <option value="">All</option>
                         {genreOption}
                     </select>
-                    {/* <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/>  */}
+                    <input type="text" placeholder="Search" onChange={this.filteredGameHandler}/> 
                     
-                        <input id="searchInput" type="text" placeholder="Search"/>
-                        <button className="searchBtn" type="submit" onClick={this.inputValueHandler}> 조회 </button>
+                        {/* <input id="searchInput" type="text" placeholder="Search"/>
+                        <button className="searchBtn" type="submit" onClick={this.inputValueHandler}> 조회 </button> */}
                  
 
                     

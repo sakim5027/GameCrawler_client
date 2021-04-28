@@ -25,8 +25,7 @@ navBarHandler(){
 //슬안: 로그아웃 기능 구현
 logoutRequester() {
     axios
-      .post('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/logout', null, {
-        'Content-Type': 'application/json',
+      .post('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/logout', null,{
         withCredentials: true,
       })
       .then(() => this.props.logoutHandler())
