@@ -67,8 +67,8 @@ class Home extends React.Component{
         console.log(e.currentTarget.getAttribute("value"))
         console.log(e.currentTarget.getAttribute("id"))
 
-        const curGameValue = e.currentTarget.getAttribute("value");
-        const curGameId = e.currentTarget.getAttribute("id").toString();
+        const {curGameValue} = e.currentTarget.getAttribute("value");
+        const {curGameId} = e.currentTarget.getAttribute("id").toString();
 
         this.setState({ 
             currentGame: curGameValue,
