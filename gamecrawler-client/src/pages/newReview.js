@@ -43,7 +43,7 @@ class NewReview extends React.Component {
                         <div className = "">게임 정보</div>
                             <div className="gameForReview">
                                 {this.props.game_image}
-                                <Like likeCouter= {this.likeCounter}/>
+                                <Like/>
                             </div>
                     <div>game info component</div>
                     </div>

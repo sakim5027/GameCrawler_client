@@ -1,3 +1,4 @@
+//작성자:김현영
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHeart} from '@fortawesome/free-regular-svg-icons';
@@ -17,6 +18,23 @@ class Like extends React.Component{
         this.likeCounter=this.likeCounter.bind(this);    
     }
 
+    //mount가 될때 관심 정보를 가져와서 state에 업데이트함으로써 좋아요 누른 적이 있는지 상태를 확인한다.
+
+    componentDidMount(){
+        this.likeListHandler()
+    }
+    
+    likeListHandler = async()=>{
+        await axios
+        .get('http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/interests',
+            {withCredentials:true}
+        ).then(res=>{
+            console.log(res.data.data);
+            this.setState({
+                games:res.data.data
+            })
+        })
+    }
     likeHandler(e){
         this.setState(prevState=>({
             like: !prevState.like
@@ -25,8 +43,7 @@ class Like extends React.Component{
            this.setState({like: true})
            this.postLikeHandler(); 
        }else{
-           this.setState({
-               like:false})
+           this.setState({like:false})           
            this.deleteLikeHandler()
        }
     }
