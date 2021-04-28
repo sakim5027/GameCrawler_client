@@ -21,6 +21,8 @@ export class Signup extends React.Component {
         this.checkPW = this.checkPW.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleGenreChange = this.handleGenreChange.bind(this);
+        this.idInputHandler = this.idInputHandler.bind(this);
+        this.chkId = this.chkId.bind(this);
     }
 
     //인풋 핸들러
@@ -28,48 +30,83 @@ export class Signup extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+    idInputHandler(e) {
+        this.setState({ [e.target.name]: e.target.value });
+        this.chkId(e.target.value);
+        
+    }
+    //아이디 유효성 검사 함수
+        chkId = (str) =>{
+            var idRegExp = /^[a-zA-Z0-9]{4,12}$/; //아이디는 영문 대소문자와 숫자 4~12자리
+            if(idRegExp.test(str) === true){
+                // alert("유효성 검사를 통과하였습니다"); 
+                this.setState({
+                    idCheck: "유효성 검사를 통과하였습니다"
+                });
+            }
+            else{
+                // alert("아이디는 영문 대소문자와 숫자를 혼합하여 4~12자리로 입력해야합니다!");
+                this.setState({
+                    idCheck: "아이디는 영문 대소문자와 숫자를 혼합하여 4~12자리로 입력해야합니다!"
+                });
+            }
+        };
+
     //아이디 중복검사
-    checkID = (e) => {
+    checkID = async (e) => {
 
         //아이디 유효성 검사 함수
-        const chkId = function(str) {
-            var idRegExp = /^[a-zA-z0-9]{4,12}$/; //아이디는 영문 대소문자와 숫자 4~12자리
-            return idRegExp.test(str) ? true : false;
-        };
+        // const chkId = function(str) {
+        //     var idRegExp = /^[a-zA-z0-9]{4,12}$/; //아이디는 영문 대소문자와 숫자 4~12자리
+        //     return idRegExp.test(str) ? true : false;
+        // };
 
         const inputId = {
             userId: this.state.userId
         };
 
-        const id_info = {
-            method: "POST",
-            body: JSON.stringify(inputId),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        };
+        await axios
+            .post("http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/check-login-id",
+            {user_id: this.state.userId},{withCredentials:true})
+            .then(res=>{
+                alert("이미 존재하는 아이디입니다")
+            })
+            .catch((err)=>{
+                alert("사용가능한 아이디입니다")
+            })
 
-        if (chkId(this.state.userId) === false) {
-        alert("아이디는 영문 대소문자와 숫자를 혼합하여 4~12자리로 입력해야합니다!");
-        this.setState({
-            email: ""
-        });
-        } else {
-        fetch("http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/check-login-id", id_info)
-            .then(res => res.json())
-            .then(json => {
-            if (json === true) {
-                this.setState({
-                    idCheck: "사용가능한 아이디입니다"
-                });
-            } 
-            else {
-                this.setState({
-                    idCheck: "이미 존재하는 아이디입니다"
-                });
-            }
-            });
-        }
+
+        // const id_info = {
+        //     method: "POST",
+        //     body: JSON.stringify(inputId),
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // };
+
+        // if (chkId(this.state.userId) === false) {
+        // alert("아이디는 영문 대소문자와 숫자를 혼합하여 4~12자리로 입력해야합니다!");
+        // this.setState({
+        //     email: ""
+        // });
+        // } else {
+        // fetch("http://ec2-3-128-203-233.us-east-2.compute.amazonaws.com:5000/user/check-login-id", id_info)
+        //     .then(res => res.json())
+        //     .then(json => {
+        //     if (json === true) {
+        //         this.setState({
+        //             idCheck: "사용가능한 아이디입니다"
+        //         });
+        //         //alert("사용가능한 아이디입니다");
+        //     } 
+        //     else {
+        //         this.setState({
+        //             idCheck: "이미 존재하는 아이디입니다"
+        //         });
+        //         //alert("이미 존재하는 아이디입니다");
+        //     }
+        //     });
+        // }
     };
 
 
@@ -175,7 +212,7 @@ export class Signup extends React.Component {
                         type="text" 
                         className = "signupIdInput"
                         placeholder="아이디를 입력하세요." 
-                        onChange={(e) => this.inputHandler(e)}
+                        onChange={(e) => this.idInputHandler(e)}
                         value={this.state.userId}
                     />
                     <button onClick ={this.checkID} className = "checkBtn">아이디 중복체크</button>

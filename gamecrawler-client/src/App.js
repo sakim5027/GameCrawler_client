@@ -22,7 +22,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLogin: false,
+      isLogin: true,
       userData: {
         //userId: "gamecrawler",
         pw: "gameCrawler01",
